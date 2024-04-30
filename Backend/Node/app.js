@@ -8,11 +8,9 @@ import rutaUsuario from './src/routes/usuarioRoute.js';
 import rutaDetalle from "./src/routes/detalleRoute.js";
 import rutaFinca from "./src/routes/FincaRoute.js";
 import rutaDatos from "./src/routes/DatosRouters.js";
-
 import cors from "cors"; 
 import RutaAuth from "./src/routes/AutonteficacionRoutes.js";
 import EstadisticaRouter from "./src/routes/EstadisticaRouters.js";
-
 const servidor = express(); 
 servidor.use(bodyParser.json());
 servidor.use(bodyParser.urlencoded({ extended: true }));
