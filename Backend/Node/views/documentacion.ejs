@@ -78,6 +78,126 @@
          </div>
     
   <br>
+         <!-- requerimiento 2 jonathan -->
+  <section>
+    <h1 class="titulo">requerimiento 2: crear sesion</h1>
+        <div class="table-container">
+        <table>
+            <thead>
+                <td>Nombre</td>
+                <td>Descripcion</td>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>crear Sesion</td>
+                    <td> 
+                    <p>
+                        El sistema debe proporcionar un formulario de registro de usuarios en la interfaz de usuario.<br>
+                        el cual pedira los datos personales generalmente utilizados para el posterior <br> 
+                        inicios de sesion para ingresar al sistema 
+                    </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>URL</td>
+                    <td>http://localhost:3000/usuario/registrar</td>
+                </tr>
+                <tr>
+                    <td>Descripcion</td>
+                    <td>Esta función permite guardar en la tabla usuarios de la base de datos, la información proporcionada por el usuario. <br>
+                        esta será utilizada para inicios de sesión; aqui se hace la encriptación de la contraseña para darle seguridad a cada sesión
+                    </td>
+                </tr>
+                <tr>
+                    <td>Verbo HTTP</td>
+                    <td>POST</td>
+                </tr>
+                <tr>
+                    <td>Header</td>
+                    <td>null</td>
+                </tr>
+                <tr>
+                    <td>Usuario</td>
+                    <td>Invitado</td>
+                </tr>
+                <tr>
+                    <td>Peticion Body</td>
+                    <td>json: {
+                        "nombre_usuario": "",
+                        "apellido_usuario": "",
+                        "correo_electronico": "",
+                        "telefono_usuario": "",
+                        "rol_usuario": "",
+                        "contraseña_usuario": "",
+                        "numero_identificacion":"",
+                        "tipo_documento":""
+                    }
+                    </td>
+                </tr>
+                <tr>
+                    <td>Respuesta Json</td>
+                    <td>Correcto: res.status(200).json({message:'Se registro el usuario con exito'}) <br><br>
+                        Incorrecto: res.status(404).json({message:'No se pudo registrar el usuario'}) <br><br>
+                        Error: status(500).json("Error en el servidor"+error.message)
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+
+        <br>
+            <!-- requerimiento 3 desplegar menu -->
+        <h1 class="titulo">requerimiento 3: Desplegar inicio</h1>
+        <div class="table-container">
+        <table>
+            <thead>
+                <td>Nombre</td>
+                <td>Descripcion</td>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Desplegar Inicio</td>
+                    <td> 
+                    <p>
+                        este requerimiento es desarrollado en el frontend
+                    </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>URL</td>
+                    <td>Null</td>
+                </tr>
+                <tr>
+                    <td>Descripcion</td>
+                    <td>Este permitirá visualizar al usuario el menú inicial el cual le permitirá seleccionar las funciones del sistema según sus necesidades 
+                    </td>
+                </tr>
+                <tr>
+                    <td>Verbo HTTP</td>
+                    <td>Null</td>
+                </tr>
+                <tr>
+                    <td>Header</td>
+                    <td>null</td>
+                </tr>
+                <tr>
+                    <td>Usuario</td>
+                    <td>Administrador, Encargado, Invitado</td>
+                </tr>
+                <tr>
+                    <td>Peticion Body</td>
+                    <td>Null
+                    </td>
+                </tr>
+                <tr>
+                    <td>Respuesta Json</td>
+                    <td>Null
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+  </section>
 
   <h1 class="titulo">requerimiento cargar y eliminar  documento</h1>
   <div class="table-container">
@@ -1712,9 +1832,62 @@
                    </tbody> 
                
                </table> 
-            </div>                 
+            </div>
+            <!-- requerimiento 15 jonathan cerrar sesion  -->
+<section>
+    <h1 class="titulo">requerimiento 15: Cerrar Sesión</h1>
+        <div class="table-container">
+        <table>
+            <thead>
+                <td>Nombre</td>
+                <td>Descripcion</td>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Cerrar Sesión</td>
+                    <td> 
+                    <p>
+                        este requerimiento es desarrollado en el frontend
+                    </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>URL</td>
+                    <td>Null</td>
+                </tr>
+                <tr>
+                    <td>Descripcion</td>
+                    <td>Permite la finalización de la sesión del usuario, el cual por medio de la destrucción del token generado en el inicio de sesión y guardado en el localStorage del frontend, permite terminar con la sesión  
+                    </td>
+                </tr>
+                <tr>
+                    <td>Verbo HTTP</td>
+                    <td>Null</td>
+                </tr>
+                <tr>
+                    <td>Header</td>
+                    <td>token</td>
+                </tr>
+                <tr>
+                    <td>Usuario</td>
+                    <td>Administrador, Encargado, Invitado</td>
+                </tr>
+                <tr>
+                    <td>Peticion Body</td>
+                    <td>Null
+                    </td>
+                </tr>
+                <tr>
+                    <td>Respuesta Json</td>
+                    <td>Null
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+</section>
             
-  </section> 
+</section> 
 </div>
 </body>
 </html>
