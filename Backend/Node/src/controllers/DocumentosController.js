@@ -129,10 +129,14 @@ export const ListaridDocumentos=async(req,res)=>{
 
     export const editarEstadoDocumento = async (req, res) => {
         try {
-    
+    //con esta valirable trae el token de la cabecera 
         let token = req.headers.token;
+        //decodifica el token y lo guarda en la variable decodedToken
             let decodedToken = jwt.decode(token);
+            // mira como trae la decodificacion y la trae en objeto 
             console.log(decodedToken);
+            // decode accede al array dentro del objeo y con user[0] que es el array accede al poscicion 0 y trae id_documentos y lo alamcena en rol 
+            // ya con ese rol se dan los permisos 
         let rol =decodedToken.user[0].rol_usuario
      
         const id_documentos = req.params.id_documentos
