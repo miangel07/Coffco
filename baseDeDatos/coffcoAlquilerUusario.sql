@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 30-04-2024 a las 04:14:03
+-- Tiempo de generación: 04-05-2024 a las 04:44:08
 -- Versión del servidor: 8.0.30
 -- Versión de PHP: 8.1.10
 
@@ -30,18 +30,10 @@ SET time_zone = "+00:00";
 CREATE TABLE `alquiler_laboratorio` (
   `id_alquiler` int NOT NULL,
   `fecha_alquiler` datetime NOT NULL,
-  `fk_versiones` int NOT NULL,
   `fk_usuarios` int NOT NULL,
-  `estado` enum('activo','inactivo') NOT NULL
+  `estado` enum('activo','inactivo') NOT NULL,
+  `fecha_fin` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
---
--- Volcado de datos para la tabla `alquiler_laboratorio`
---
-
-INSERT INTO `alquiler_laboratorio` (`id_alquiler`, `fecha_alquiler`, `fk_versiones`, `fk_usuarios`, `estado`) VALUES
-(1, '2024-04-30 04:13:16', 1, 1, 'activo'),
-(2, '2024-04-30 04:13:16', 1, 1, 'activo');
 
 -- --------------------------------------------------------
 
@@ -240,7 +232,8 @@ CREATE TABLE `usuarios` (
 
 INSERT INTO `usuarios` (`id_usuario`, `nombre_usuario`, `apellido_usuario`, `correo_electronico`, `telefono_usuario`, `rol_usuario`, `contraseña_usuario`, `numero_identificacion`, `tipo_documento`) VALUES
 (1, 'miguel', 'lopez', 'jonathan@gamil.com', '1006459235', 'administrador', '$2a$10$C13W/9Zhp4DsFvChEigZfuzVgZQVe1z1ZbVq038GFHlCs2Gt7t4oC', '1006459235', 'cc'),
-(5, 'jonathan', 'lopez', 'jonathan@gamil.com', '312313212', 'administrador', '$2a$10$5bLYxSlyJWMQz1pBle/4pedLcwfOaE9xj9PGe/qEaG2LKk1PDfnOm', '1313212', 'cc');
+(5, 'jonathan', 'lopez', 'jonathan@gamil.com', '312313212', 'administrador', '$2a$10$5bLYxSlyJWMQz1pBle/4pedLcwfOaE9xj9PGe/qEaG2LKk1PDfnOm', '1313212', 'cc'),
+(6, 'jhontan', 'lopez', 'lopez@gmail.com', '3136156071', 'encargado', '1234', '100645555', 'cc');
 
 -- --------------------------------------------------------
 
@@ -276,7 +269,6 @@ INSERT INTO `versiones` (`id_formato`, `version`, `editable`, `fk_id_tipo_format
 --
 ALTER TABLE `alquiler_laboratorio`
   ADD PRIMARY KEY (`id_alquiler`),
-  ADD KEY `alquilerVersiones` (`fk_versiones`),
   ADD KEY `alquiler_usuario` (`fk_usuarios`);
 
 --
@@ -414,7 +406,7 @@ ALTER TABLE `tipo_formato`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id_usuario` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_usuario` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de la tabla `versiones`
@@ -430,8 +422,7 @@ ALTER TABLE `versiones`
 -- Filtros para la tabla `alquiler_laboratorio`
 --
 ALTER TABLE `alquiler_laboratorio`
-  ADD CONSTRAINT `alquiler_usuario` FOREIGN KEY (`fk_usuarios`) REFERENCES `usuarios` (`id_usuario`),
-  ADD CONSTRAINT `alquilerVersiones` FOREIGN KEY (`fk_versiones`) REFERENCES `versiones` (`id_formato`);
+  ADD CONSTRAINT `alquiler_usuario` FOREIGN KEY (`fk_usuarios`) REFERENCES `usuarios` (`id_usuario`);
 
 --
 -- Filtros para la tabla `datos`
