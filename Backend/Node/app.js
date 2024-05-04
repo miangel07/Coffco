@@ -2,7 +2,7 @@ import express from "express";
 import bodyParser from "body-parser";
 import rutaMunicipio from "./src/routes/municipioRoute.js";
 import ruta from "./src/routes/muestraRoutes.js";
-import DocumentosController from "./src/routes/DocumentosRoute.js";
+import DocumentosRouter from "./src/routes/DocumentosRoute.js";
 import rutaVersion from './src/routes/VersionesRoute.js';
 import rutaUsuario from './src/routes/usuarioRoute.js';
 import rutaDetalle from "./src/routes/detalleRoute.js";
@@ -26,7 +26,7 @@ servidor.use('/documents', (req, res) => {
 
 servidor.use("/municipio", rutaMunicipio);
 servidor.use("/muestra", ruta);
-servidor.use("/documentos", DocumentosController);
+servidor.use("/documentos", DocumentosRouter);
 servidor.use("/versiones", rutaVersion);
 servidor.use('/usuario', rutaUsuario);
 servidor.use('/detalle', rutaDetalle);

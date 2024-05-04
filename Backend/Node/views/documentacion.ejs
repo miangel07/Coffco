@@ -59,7 +59,7 @@
                     <td>Peticion Body</td>
                     <td>json: {
                         "numero_identificacion":"1006459235",
-                        "contraseña_usuario":"miguel123"
+                        "contraseña_usuario":"1234"
                     }
                     </td>
                 </tr>
@@ -79,7 +79,7 @@
     
   <br>
 
-  <h1 class="titulo">requerimiento cargar y eliminar  documento</h1>
+  <h1 class="titulo">Administrar Documentos (cargar,eliminar,actualizar,listar,buscar)</h1>
   <div class="table-container">
       <table>
           <thead>
@@ -114,11 +114,11 @@
               </tr>
               <tr>
                   <td>URL</td>
-                  <td>http://localhost:3000/archivo/registrar</td>
+                  <td>http://localhost:3000/docuemntos/registrar</td>
               </tr>
               <tr>
                   <td>Descripcion</td>
-                  <td>Esta funcion permite registrar nuevos datos en la tabla archivos de la base de datos</td>
+                  <td>Esta funcion permite registrar nuevos datos en la tabla docuemntos de la base de datos</td>
               </tr>
               <tr>
                   <td>Verbo HTTP</td>
@@ -147,7 +147,7 @@
               <tr>
                   <td>Respuesta Json</td>
                   <td>Correcto: status:200.json({	"message":"Se registró con éxito el archivo"}) <br><br>
-                      Incorrecto: status(404).json({"message":"No se registró el archivo."}) <br><br>
+                      Incorrecto: status(404).json({"message":"No se registró el docuemnto."}) <br><br>
                       Error: status(500).json({"message":"error "+e.message})
                   </td>
               </tr>
@@ -156,7 +156,65 @@
       </div>
 
       <br>
-
+   
+      <div class="table-container">
+        <table>
+            <thead>
+                <td>Nombre</td>
+                <td>Descripcion</td>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>listar documento</td>
+                    <td> 
+                    <p>
+                        este apartado se para  listar todos los docuemntos de la base datos de la tabla documentos 
+                    </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>URL</td>
+                    <td>http://localhost:3000/documentos/listar</td>
+                </tr>
+                <tr>
+                    <td>Descripcion</td>
+                    <td>Esta funcion permite lisatr datos  de la tabla docuemntos de la base de datos</td>
+                </tr>
+                <tr>
+                    <td>Verbo HTTP</td>
+                    <td>GET</td>
+                </tr>
+                <tr>
+                    <td>Header</td>
+                    <td>Token</td>
+                </tr>
+                <tr>
+                    <td>Usuario</td>
+                    <td>Administrador,encargados</td>
+                </tr>
+                <tr>
+                    <td>Peticion Body</td>
+                    <td>null
+                    </td>
+                </tr>
+                <tr>
+                    <td>Respuesta Json</td>
+                    <td>Correcto: status:200.json({<br>
+                        "id_documentos": 6,<br>
+                        "nombre": "procesos logicos",<br>
+                        "fecha_carga": "2024-04-27T05:00:00.000Z",<br>
+                        "fk_id_usuarios": 1,<br>
+                        "descripcion": "procesos logicos",<br>
+                        "formato": "pdf",<br>
+                        "estado": "activo"<br>
+                    })<br>
+                        Incorrecto: status(404).json({"message" : "No se encontraron docuemntos en la base de datos"})<br><br>
+                        Error: status(500).json({"message" : "Error en el controlador DocumentosController.js " + err})
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
  
      
 
@@ -170,28 +228,28 @@
           </thead>
           <tbody>
               <tr>
-                  <td>eliminar documento</td>
+                  <td>actualizar documento</td>
                   <td> 
                   <p>
-                      este apartado se para  eliminar,  los datos de la tabla archivos 
+                      este apartado es para  actualizar,  los datos de la tabla documentos 
                   </p>
                   </td>
               </tr>
               <tr>
                   <td>URL</td>
-                  <td>http://localhost:3000/archivo/eliminar/:id_documentos</td>
+                  <td>http://localhost:3000/documentos/actualizar/2</td>
               </tr>
               <tr>
                   <td>Descripcion</td>
-                  <td>Esta funcion permite eliminar datos por el id  de la tabla archivos de la base de datos</td>
+                  <td>Esta funcion permite actualizar un documento  por el id  de la tabla documentos de la base de datos</td>
               </tr>
               <tr>
                   <td>Verbo HTTP</td>
-                  <td>DELETE</td>
+                  <td>PUT</td>
               </tr>
               <tr>
                   <td>Header</td>
-                  <td>null</td>
+                  <td>TOKEN</td>
               </tr>
               <tr>
                   <td>Usuario</td>
@@ -199,25 +257,246 @@
               </tr>
               <tr>
                   <td>Peticion Body</td>
-                  <td>null
+                  <td>{<br>
+                    "nombre":"procesos estrategicos", <br>
+                    "fecha_carga":"2024-05-04", <br>
+                    "fk_id_usuarios":1, <br>
+                    "descripcion":"datos estrategicos",<br>
+                    "formato":"word",<br>
+                    "estado":"activo"<br>
+                }<br>
                   </td>
               </tr>
               <tr>
                   <td>Respuesta Json</td>
-                  <td>Correcto: status:200.json({	"message":"Se eliminó con éxito el archivo."}) <br><br>
-                      Incorrecto: status(404).json({"message":"No se eliminó el archivo."}) <br><br>
+                  <td>Correcto: status:200.json({"message":"Se actualizó con éxito el documentos."})<br><br>
+                      Incorrecto: status(404).json({"message":"No se actualizó el documentos."}) <br><br>
                       Error: status(500).json({"message":"error "+e.message})
                   </td>
               </tr>
           </tbody>
       </table>
       </div>
-
+      <br>
+      <div class="table-container">
+        <table>
+            <thead>
+                <td>Nombre</td>
+                <td>Descripcion</td>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>eliminar documento</td>
+                    <td> 
+                    <p>
+                        este apartado se para  eliminar,  los datos de la tabla archivos 
+                    </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>URL</td>
+                    <td>http://localhost:3000/documentos/eliminar/2</td>
+                </tr>
+                <tr>
+                    <td>Descripcion</td>
+                    <td>Esta funcion permite actualizar un documento  por el id  de la tabla documentos de la base de datos</td>
+                </tr>
+                <tr>
+                    <td>Verbo HTTP</td>
+                    <td>DELETE</td>
+                </tr>
+                <tr>
+                    <td>Header</td>
+                    <td>TOKEN</td>
+                </tr>
+                <tr>
+                    <td>Usuario</td>
+                    <td>Administrador,encargados</td>
+                </tr>
+                <tr>
+                    <td>Peticion Body</td>
+                    <td>null
+                    </td>
+                </tr>
+                <tr>
+                    <td>Respuesta Json</td>
+                    <td>Correcto: status:200.json({"message":"Se elimino con éxito el documentos."})<br><br>
+                        Incorrecto: status(404).json({"message":"No se elimino el documentos."}) <br><br>
+                        Error: status(500).json({"message":"error "+e.message})
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
       <br>
 
+      <div class="table-container">
+        <table>
+            <thead>
+                <td>Nombre</td>
+                <td>Descripcion</td>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>buscar documento</td>
+                    <td> 
+                    <p>
+                        este apartado se para  buscar,  los documentos  de la tabla Documentos 
+                    </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>URL</td>
+                    <td>http://localhost:3000/documentos/buscar/2</td>
+                </tr>
+                <tr>
+                    <td>Descripcion</td>
+                    <td>Esta funcion permite actualizar un documento  por el id  de la tabla documentos de la base de datos</td>
+                </tr>
+                <tr>
+                    <td>Verbo HTTP</td>
+                    <td>GET</td>
+                </tr>
+                <tr>
+                    <td>Header</td>
+                    <td>TOKEN</td>
+                </tr>
+                <tr>
+                    <td>Usuario</td>
+                    <td>Administrador,encargados</td>
+                </tr>
+                <tr>
+                    <td>Peticion Body</td>
+                    <td>null
+                    </td>
+                </tr>
+                <tr>
+                    <td>Respuesta Json</td>
+                    <td>Correcto: status:200.json({<br>
+                        "id_documentos": 2,<br>
+                        "nombre": "procesos estrategicos",<br>
+                        "fecha_carga": "2024-05-04T05:00:00.000Z",<br>
+                        "fk_id_usuarios": 1,<br>
+                        "descripcion": "asdasdas",<br>
+                        "formato": "word",<br>
+                        "estado": "activo"<br>
+                    })<br><br>
+                        Incorrecto: status(404).json({ "message": "No se ha encontrado el documento solicitado."}) <br><br>
+                        Error: status(500).json({"message":"error "+e.message})
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
 
-     
       <br>
+      <h1>requerimiento actulizar estado del documentos y aprobar </h1> 
+                     
+      <div class="table-container">
+       <table> 
+      
+          <thead> 
+      
+              <td>Nombre</td> 
+      
+              <td>Descripcion</td> 
+      
+          </thead> 
+      
+          <tbody> 
+      
+              <tr> 
+      
+                  <td>Revisar Documentos</td> 
+      
+                  <td>  
+      
+                  <p> 
+      
+                      En la sección de servicios, se permitirá la edición del estado de los documentos que contienen los formularios <br> 
+      
+                      de servicios y procesos.Esta funcionalidad estará habilitada para los roles de  <br> 
+      
+                     administradores. en caso de ser encargado se subiran inacativos  esta <br> 
+      
+                      será enviada con  solicitud de aprobación a todos lo administradores. <br> 
+      
+                  </p> 
+      
+                  </td> 
+      
+              </tr> 
+      
+              <tr> 
+      
+                  <td>URL</td> 
+      
+                  <td>http://localhost:3000/documentos/actualizarEstado/2</td> 
+      
+              </tr> 
+      
+              <tr> 
+      
+                  <td>Descripcion</td> 
+      
+                  <td>Esta funcion permite cambiar el estado a los documentos datos de la tabla documentos de la base de datos</td> 
+      
+              </tr> 
+      
+              <tr> 
+      
+                  <td>Verbo HTTP</td> 
+      
+                  <td>put</td> 
+      
+              </tr> 
+      
+              <tr> 
+      
+                  <td>Header</td> 
+      
+                  <td>token</td> 
+      
+              </tr> 
+      
+              <tr> 
+      
+                  <td>Usuario</td> 
+      
+                  <td>Administrador</td> 
+      
+              </tr> 
+      
+              <tr> 
+      
+                  <td>Peticion Body</td> 
+      
+                  <td> {<br>
+
+                    "estado":"inactivo"<br>
+                }<br>
+      
+                  </td> 
+      
+              </tr> 
+      
+              <tr> 
+      
+                  <td>Respuesta Json</td> 
+                     <br> 
+                    <td> Correcto : res.status(200).json({"message":"Se actualizó con éxito el estado del documento."}) <br> 
+                        Incorrecto: status(404).json({"message":"No se actualizó el estado del documento."}) <br> 
+        
+                        Error: status(500).json({"message" : "Error en el controlador DocumentosController.js " + err})  <br> 
+         
+                  </td> 
+      
+              </tr> 
+      
+          </tbody> 
+      
+      </table> 
+   </div>
     
         <h1 class="titulo">Generar Estadistica</h1>
         <div class="table-container">
@@ -237,7 +516,7 @@
                     </tr>
                     <tr>
                         <td>URL</td>
-                        <td>http://localhost:3000/estadistica/td>
+                        <td>http://localhost:3000/estadistica <td>
                     </tr>
                     <tr>
                         <td>Descripcion</td>
@@ -300,199 +579,11 @@
 
             <br>
 
-            <h1 class="titulo">Buscar documentos</h1>
-            <div class="table-container">
-                <table>
-                    <thead>
-                        <td>Nombre</td>
-                        <td>Descripcion</td>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Buscar documentos</td>
-                            <td> 
-                            <p>
-                                este apartado es para buscar docuemntos de la base de datos
-                            </p>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>URL</td>
-                            <td>http://localhost:3000/documentos/buscar<td>
-                        </tr>
-                        <tr>
-                            <td>Descripcion</td>
-                            <td> El sistema cuenta con una función de búsqueda que permita 
-                              a los usuarios buscar documentos utilizando el nombre </td>
-                        </tr>
-                        <tr>
-                            <td>Verbo HTTP</td>
-                            <td>post</td>
-                        </tr>
-                        <tr>
-                            <td>Header</td>
-                            <td>null</td>
-                        </tr>
-                        <tr>
-                            <td>Usuario</td>
-                            <td>Administrador,encargados</td>
-                        </tr>
-                        <tr>
-                            <td>Peticion Body</td>
-                            <td>'nombre':'procesos misionales'
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Respuesta Json</td>
-                            <td>Correcto:   res.status(200).json( {
-                              "id": 2,<br>
-                              "nombre": "procesos misionales",<br>
-                              "descripcion": "documento procesos misionales",<br>
-                              "formato": "pdf"<br>
-                            },<br>
-                            {<br>
-                              "id": 4,<br>
-                              "nombre": "procesos misionales",<br>
-                              "descripcion": "documento procesos misionales",<br>
-                              "formato": "pdf"<br>
-                             }); 
-                          <br><br>
-                                Incorrecto:  res.status(404).json({ message: "No se encontraron archivos en la base de datos" });
-                          <br><br>
-                                Error:  res.status(500).json({ message: "Error en la conexion"+error.message });
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-                </div>
-
-
-
-                <h1>requerimiento 6 Editar Documentos</h1> 
+              
             
-                <div class="table-container">
-                <table> 
-               
-                   <thead> 
-               
-                       <td>Nombre</td> 
-               
-                       <td>Descripcion</td> 
-               
-                   </thead> 
-               
-                   <tbody> 
-               
-                       <tr> 
-               
-                           <td>Editar Documentos</td> 
-               
-                           <td>  
-               
-                           <p> 
-               
-                               En la sección de servicios, se permitirá la edición de los documentos que contienen los formularios <br> 
-               
-                               de servicios y procesos.Esta funcionalidad estará habilitada para los roles de encargados <br> 
-               
-                               y administradores. En caso de que un usuario con rol de encargado edite la información, esta <br> 
-               
-                               será enviada con  solicitud de aprobación a todos lo administradores. <br> 
-               
-                           </p> 
-               
-                           </td> 
-               
-                       </tr> 
-               
-                       <tr> 
-               
-                           <td>URL</td> 
-               
-                           <td>http://localhost:3000/documentos/actualizar/:id_documentos</td> 
-               
-                       </tr> 
-               
-                       <tr> 
-               
-                           <td>Descripcion</td> 
-               
-                           <td>Esta funcion permite actualizar nuevos datos en la tabla documentos de la base de datos</td> 
-               
-                       </tr> 
-               
-                       <tr> 
-               
-                           <td>Verbo HTTP</td> 
-               
-                           <td>PUT</td> 
-               
-                       </tr> 
-               
-                       <tr> 
-               
-                           <td>Header</td> 
-               
-                           <td>null</td> 
-               
-                       </tr> 
-               
-                       <tr> 
-               
-                           <td>Usuario</td> 
-               
-                           <td>Administrador,encargados</td> 
-               
-                       </tr> 
-               
-                       <tr> 
-               
-                           <td>Peticion Body</td> 
-               
-                           <td> 
-               
-                               { <br> 
-               
-                                   "nombre": "procesos tecnologicos", <br> 
-               
-                                   "fecha_carga": "2024-04-27", <br> 
-               
-                                   "fk_id_usuarios": 1, <br> 
-               
-                                   "fk_id_formatos": 1, <br> 
-               
-                                   "descripcion": "documento de procesos tecnologicos", <br> 
-               
-                                   "formato": "pdf", <br> 
-               
-                                   "estado": "inactivo" <br> 
-               
-                               } <br> 
-               
-                           </td> 
-               
-                       </tr> 
-               
-                       <tr> 
-               
-                           <td>Respuesta Json</td> 
-               
-                           <td>Correcto: status:200.json({"message":"Se actualizó con éxito el documentos."}) <br><br> 
-               
-                               Incorrecto: status(404).json({"message":"No se actualizó el documentos."}) <br><br> 
-               
-                               Error: status(500).json({"message":"error "+e.message}) 
-               
-                           </td> 
-               
-                       </tr> 
-               
-                   </tbody> 
-               
-               </table> 
-            </div>
+    
                <br> 
-               <h1>requerimiento 7 Administrar Usuarios</h1> 
+               <h1>requerimiento  Administrar Usuarios (registrar,actualizar,eliminar,buscar,listar)</h1> 
                
                <div class="table-container"> 
                 <table> 
@@ -577,7 +668,7 @@
                
                            <td>Header</td> 
                
-                           <td>null</td> 
+                           <td>token</td> 
                
                        </tr> 
                
@@ -585,7 +676,7 @@
                
                            <td>Usuario</td> 
                
-                           <td>Administrador,encargados</td> 
+                           <td>Administrador</td> 
                
                        </tr> 
                
@@ -639,150 +730,19 @@
             </div>
                <br> 
 
-               <h1>requerimiento 7 Administrar Usuarios</h1> 
 
-               <div class="table-container">
-                <table> 
-               
-                   <thead> 
-               
-                       <td>Nombre</td> 
-               
-                       <td>Descripcion</td> 
-               
-                   </thead> 
-               
-                   <tbody> 
-               
-                       <tr> 
-               
-                           <td>Administrar Usuarios</td> 
-               
-                           <td>  
-               
-                           <p> 
-               
-                           Generar token    
-               
-                           </p> 
-               
-                           </td> 
-               
-                       </tr> 
-               
-                       <tr> 
-               
-                           <td>URL</td> 
-               
-                           <td>http://localhost:3000/validar</td> 
-               
-                       </tr> 
-               
-                       <tr> 
-               
-                           <td>Descripcion</td> 
-               
-                           <td>Esta funcion permite Generar un token de usuarios en la base de datos</td> 
-               
-                       </tr> 
-               
-                       <tr> 
-               
-                           <td>Verbo HTTP</td> 
-               
-                           <td>POST</td> 
-               
-                       </tr> 
-               
-                       <tr> 
-               
-                           <td>Header</td> 
-               
-                           <td>null</td> 
-               
-                       </tr> 
-               
-                       <tr> 
-               
-                           <td>Usuario</td> 
-               
-                           <td>Administrador,encargados</td> 
-               
-                       </tr> 
-               
-                       <tr> 
-               
-                           <td>Peticion Body</td> 
-               
-                           <td> 
-               
-                               { <br> 
-               
-                                   "numero_identificacion": "1083860733", <br> 
-               
-                                   "contraseña_usuario": "Daniel123" <br> 
-               
-                               } <br> 
-               
-                           </td> 
-               
-                       </tr> 
-               
-                       <tr> 
-               
-                           <td>Respuesta Json</td> 
-               
-                           <td>Correcto: status:200.json({  <br> 
-               
-                               "user": [ <br> 
-               
-                                   { <br> 
-               
-                                       "nombre_usuario": "Daniel", <br> 
-               
-                                       "rol_usuario": "encargado" <br> 
-               
-                                   } <br> 
-               
-                               ], <br> 
-               
-                               "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjpbeyJub21icmVfd <br> 
-               
-                               XN1YXJpbyI6IkRhbmllbCIsInJvbF91c3VhcmlvIjoiZW5jYXJnYWRvIn1dLCJpYXQiOjE3MT <br> 
-               
-                               QyNDk5NjUsImV4cCI6MTcxNDMzNjM2NX0.H7M42JyUge0XCUqluAXSYVoNq_VQLXX0l0gfzvn_vQA", <br> 
-               
-                               "mensaje": "usuario autorizado"<br> 
-               
-                           }) <br> 
-               
-                               Incorrecto: status(404).json({"menssage": "Usuario no autorizado"}) <br><br> 
-               
-                               Error: status(500).json({"Error en el servidor"+error.message}) 
-               
-                           </td> 
-               
-                       </tr> 
-               
-                   </tbody> 
-               
-               </table> 
-            </div>
+        
                <br> 
                
                 
-                
-                
-                
-                
-                
+            
                
                <br> 
                
                 
                 
                
-               <h1>requerimiento 7 Administrar Usuarios</h1> 
+               <h1>listar</h1> 
                
                 
                 
@@ -872,11 +832,7 @@
                
                            <td>Header</td> 
                
-                           <td>token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjpbeyJub21icmVf <br> 
-               
-                               dXN1YXJpbyI6IkRhbmllbCIsInJvbF91c3VhcmlvIjoiZW5jYXJnYWRvIn1dLCJpYXQiOj <br> 
-               
-                               E3MTQyNDk5NjUsImV4cCI6MTcxNDMzNjM2NX0.H7M42JyUge0XCUqluAXSYVoNq_VQLXX0l0gfzvn_vQA <br> 
+                           <td>token<br> 
                
                            </td> 
                
@@ -886,7 +842,7 @@
                
                            <td>Usuario</td> 
                
-                           <td>Administrador,encargados</td> 
+                           <td>Administrador</td> 
                
                        </tr> 
                
@@ -930,9 +886,9 @@
                
                            }) <br> 
                
-                               Incorrecto: status(402).json({"mensaje":"se requiere un token}) <br><br> 
+                               Incorrecto: status(402).json({message:'No se encontraron usuarios'})<br><br> 
                
-                               Error: status(402).json({"mensaje":"token invalido"}) 
+                               Error: status(402).json({message:'Error en el servidor'+error.message})
                
                            </td> 
                
@@ -953,7 +909,7 @@
                 
                 
                
-               <h1>requerimiento 7 Administrar Usuarios</h1> 
+               <h1>buscar usuario</h1> 
                
                 
                 
@@ -1043,12 +999,7 @@
                
                            <td>Header</td> 
                
-                           <td>token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjpbeyJub21icmVf <br> 
-               
-                               dXN1YXJpbyI6IkRhbmllbCIsInJvbF91c3VhcmlvIjoiZW5jYXJnYWRvIn1dLCJpYXQiOj <br> 
-               
-                               E3MTQyNDk5NjUsImV4cCI6MTcxNDMzNjM2NX0.H7M42JyUge0XCUqluAXSYVoNq_VQLXX0l0gfzvn_vQA <br> 
-               
+                           <td>token        
                            </td> 
                
                        </tr> 
@@ -1057,7 +1008,7 @@
                
                            <td>Usuario</td> 
                
-                           <td>Administrador,encargados</td> 
+                           <td>Administrador</td> 
                
                        </tr> 
                
@@ -1101,9 +1052,9 @@
                
                            }) <br> 
                
-                               Incorrecto: status(402).json({"mensaje":"se requiere un token}) <br><br> 
+                               Incorrecto: status(402).json({'message':'El usuario no existe'})<br><br> 
                
-                               Error: status(402).json({"mensaje":"token invalido"}) 
+                               Error: status(402).json({message:'Error en el servidor'+error.message}) 
                
                            </td> 
                
@@ -1124,7 +1075,7 @@
                 
                 
                
-               <h1>requerimiento 7 Administrar Usuarios</h1> 
+               <h1>actualizar</h1> 
                
                 
                 
@@ -1213,11 +1164,7 @@
                
                            <td>Header</td> 
                
-                           <td>token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjpbeyJub21icmVf <br> 
-               
-                               dXN1YXJpbyI6IkRhbmllbCIsInJvbF91c3VhcmlvIjoiZW5jYXJnYWRvIn1dLCJpYXQiOj <br> 
-               
-                               E3MTQyNDk5NjUsImV4cCI6MTcxNDMzNjM2NX0.H7M42JyUge0XCUqluAXSYVoNq_VQLXX0l0gfzvn_vQA <br> 
+                           <td>token 
                
                            </td> 
                
@@ -1227,7 +1174,7 @@
                
                            <td>Usuario</td> 
                
-                           <td>Administrador,encargados</td> 
+                           <td>Administrador</td> 
                
                        </tr> 
                
@@ -1265,11 +1212,11 @@
                
                            <td>Respuesta Json</td> 
                
-                           <td>Correcto: status:200.json({'message':'Se registro el usuario con exito'}) <br><br> 
+                           <td>Correcto: status:200.json({'message':'Usuario actualizo'}) <br><br> 
                
-                               Incorrecto: status(404).json({'message':'No se pudo registrar el usuario'}) <br><br> 
+                               Incorrecto: status(404).json({'message':'Usuario no actualizado'}) <br><br> 
                
-                               Error: status(500).json({'message':'Error'+error.message}) 
+                               Error: status(500).json({'message': 'Error'+error.message})
                
                            </td> 
                
@@ -1287,7 +1234,7 @@
                 
                 
                
-               <h1>requerimiento 7 Administrar Usuarios</h1> 
+               <h1>Eliminiar</h1> 
                
                 
                 
@@ -1377,12 +1324,7 @@
                
                            <td>Header</td> 
                
-                           <td>token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjpbeyJub21icmVf <br> 
-               
-                               dXN1YXJpbyI6IkRhbmllbCIsInJvbF91c3VhcmlvIjoiZW5jYXJnYWRvIn1dLCJpYXQiOj <br> 
-               
-                               E3MTQyNDk5NjUsImV4cCI6MTcxNDMzNjM2NX0.H7M42JyUge0XCUqluAXSYVoNq_VQLXX0l0gfzvn_vQA <br> 
-               
+                           <td>token
                            </td> 
                
                        </tr> 
@@ -1425,294 +1367,9 @@
                
                </table> 
             </div>
-               <br> 
           
-               <h1>requerimiento 14 Revisar y aprobar documentos</h1> 
-                     
-               <div class="table-container">
-                <table> 
-               
-                   <thead> 
-               
-                       <td>Nombre</td> 
-               
-                       <td>Descripcion</td> 
-               
-                   </thead> 
-               
-                   <tbody> 
-               
-                       <tr> 
-               
-                           <td>Revisar Documentos</td> 
-               
-                           <td>  
-               
-                           <p> 
-               
-                               En la sección de servicios, se permitirá la edición de los documentos que contienen los formularios <br> 
-               
-                               de servicios y procesos.Esta funcionalidad estará habilitada para los roles de encargados <br> 
-               
-                               y administradores. En caso de que un usuario con rol de encargado edite la información, esta <br> 
-               
-                               será enviada con  solicitud de aprobación a todos lo administradores. <br> 
-               
-                           </p> 
-               
-                           </td> 
-               
-                       </tr> 
-               
-                       <tr> 
-               
-                           <td>URL</td> 
-               
-                           <td>http://localhost:3000/documentos/listar</td> 
-               
-                       </tr> 
-               
-                       <tr> 
-               
-                           <td>Descripcion</td> 
-               
-                           <td>Esta funcion permite listar datos de la tabla documentos de la base de datos</td> 
-               
-                       </tr> 
-               
-                       <tr> 
-               
-                           <td>Verbo HTTP</td> 
-               
-                           <td>GET</td> 
-               
-                       </tr> 
-               
-                       <tr> 
-               
-                           <td>Header</td> 
-               
-                           <td>null</td> 
-               
-                       </tr> 
-               
-                       <tr> 
-               
-                           <td>Usuario</td> 
-               
-                           <td>Administrador,encargados</td> 
-               
-                       </tr> 
-               
-                       <tr> 
-               
-                           <td>Peticion Body</td> 
-               
-                           <td> Null 
-               
-                           </td> 
-               
-                       </tr> 
-               
-                       <tr> 
-               
-                           <td>Respuesta Json</td> 
-               
-                           <td>Correcto: status:200.json([ <br> 
-               
-                               {<br> 
-               
-                                   "id_documentos": 2,<br> 
-               
-                                   "nombre": "procesos misionales",<br> 
-               
-                                   "fecha_carga": "2024-04-03T05:00:00.000Z",<br> 
-               
-                                   "fk_id_usuarios": 1,<br> 
-               
-                                   "descripcion": "documento de procesos misionales",<br> 
-               
-                                   "formato": "pdf",<br> 
-               
-                                   "estado": "activo"<br> 
-               
-                               },<br> 
-               
-                               {<br> 
-               
-                                   "id_documentos": 4,<br> 
-               
-                                   "nombre": "procesos tecnologicos",<br> 
-               
-                                   "fecha_carga": "2024-04-27T05:00:00.000Z",<br> 
-               
-                                   "fk_id_usuarios": 1,<br> 
-               
-                                   "descripcion": "documento de procesos tecnologicos",<br> 
-               
-                                   "formato": "pdf",<br> 
-               
-                                   "estado": "inactivo"<br> 
-               
-                               }<br> 
-               
-                           ]) <br> 
-               
-                               Incorrecto: status(404).json({"message" : "No se encontraron archivos en la base de datos"}) <br><br> 
-               
-                               Error: status(500).json({"message" : "Error en el controlador DocumentosController.js " + err}) 
-               
-                           </td> 
-               
-                       </tr> 
-               
-                   </tbody> 
-               
-               </table> 
-            </div>
-               <h1>requerimiento 14 Revisar y aprobar documentos</h1> 
               
-               <div class="table-container">
-                <table> 
-               
-                   <thead> 
-               
-                       <td>Nombre</td> 
-               
-                       <td>Descripcion</td> 
-               
-                   </thead> 
-               
-                   <tbody> 
-               
-                       <tr> 
-               
-                           <td>Aprobar Documentos</td> 
-               
-                           <td>  
-               
-                           <p> 
-               
-                               En la sección de servicios, se permitirá la edición de los documentos que contienen los formularios <br> 
-               
-                               de servicios y procesos.Esta funcionalidad estará habilitada para los roles de encargados <br> 
-               
-                               y administradores. En caso de que un usuario con rol de encargado edite la información, esta <br> 
-               
-                               será enviada con  solicitud de aprobación a todos lo administradores. <br> 
-               
-                           </p> 
-               
-                           </td> 
-               
-                       </tr> 
-               
-                       <tr> 
-               
-                           <td>URL</td> 
-               
-                           <td>http://localhost:3000/documentos/listar</td> 
-               
-                       </tr> 
-               
-                       <tr> 
-               
-                           <td>Descripcion</td> 
-               
-                           <td>Esta funcion permite aprobar documentos de la tabla documentos de la base de datos</td> 
-               
-                       </tr> 
-               
-                       <tr> 
-               
-                           <td>Verbo HTTP</td> 
-               
-                           <td>GET</td> 
-               
-                       </tr> 
-               
-                       <tr> 
-               
-                           <td>Header</td> 
-               
-                           <td>null</td> 
-               
-                       </tr> 
-               
-                       <tr> 
-               
-                           <td>Usuario</td> 
-               
-                           <td>Administrador</td> 
-               
-                       </tr> 
-               
-                       <tr> 
-               
-                           <td>Peticion Body</td> 
-               
-                           <td> Null 
-               
-                           </td> 
-               
-                       </tr> 
-               
-                       <tr> 
-               
-                           <td>Respuesta Json</td> 
-               
-                           <td>Correcto: status:200.json([ <br> 
-               
-                               {<br> 
-               
-                                   "id_documentos": 2,<br> 
-               
-                                   "nombre": "procesos misionales",<br> 
-               
-                                   "fecha_carga": "2024-04-03T05:00:00.000Z",<br> 
-               
-                                   "fk_id_usuarios": 1,<br> 
-               
-                                   "descripcion": "documento de procesos misionales",<br> 
-               
-                                   "formato": "pdf",<br> 
-               
-                                   "estado": "activo"<br> 
-               
-                               },<br> 
-               
-                               {<br> 
-               
-                                   "id_documentos": 4,<br> 
-               
-                                   "nombre": "procesos tecnologicos",<br> 
-               
-                                   "fecha_carga": "2024-04-27T05:00:00.000Z",<br> 
-               
-                                   "fk_id_usuarios": 1,<br> 
-               
-                                   "descripcion": "documento de procesos tecnologicos",<br> 
-               
-                                   "formato": "pdf",<br> 
-               
-                                   "estado": "inactivo"<br> 
-               
-                               }<br> 
-               
-                           ]) <br> 
-               
-                               Incorrecto: status(404).json({"message" : "No se encontraron archivos en la base de datos"}) <br><br> 
-               
-                               Error: status(500).json({"message" : "Error en el controlador DocumentosController.js " + err}) 
-               
-                           </td> 
-               
-                       </tr> 
-               
-                   </tbody> 
-               
-               </table> 
-            </div>                 
+
             
   </section> 
 </div>

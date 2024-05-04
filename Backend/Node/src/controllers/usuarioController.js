@@ -1,5 +1,6 @@
 import {conexion} from '../database/conexion.js'
 import bcryptjs from 'bcryptjs';
+import { validationResult } from 'express-validator';
 export const listarUsuario = async (req,res)=>{
     try {
         let sql='select * from usuarios'
@@ -32,10 +33,15 @@ export const listarUsuarioId = async (req,res) => {
 
 export const registrarUsuario = async (req,res)=>{
     try {
+        
+        const error = validationResult(req)
+        if(!error.isEmpty()){
+            return res.status(400).json(error)
+        }
         let{nombre_usuario,apellido_usuario,correo_electronico,telefono_usuario,rol_usuario,contraseña_usuario,numero_identificacion,tipo_documento}=req.body
         const salt = await bcryptjs.genSalt(10);
         let hashPassword = await bcryptjs.hash(contraseña_usuario,salt)
-        console.log(hashPassword)
+   
         let sql = `insert into usuarios (nombre_usuario,apellido_usuario,correo_electronico,telefono_usuario,rol_usuario,contraseña_usuario,numero_identificacion,tipo_documento)
         value('${nombre_usuario}','${apellido_usuario}','${correo_electronico}','${telefono_usuario}','${rol_usuario}','${hashPassword}','${numero_identificacion}','${tipo_documento}')`;
         const [respuesta]=await conexion.query(sql)
@@ -67,6 +73,10 @@ export const eliminarUsuario = async (req,res)=>{
 
 export const actualizarUsuario = async (req,res)=>{
     try {
+        const error = validationResult(req)
+        if(!error.isEmpty()){
+            return res.status(400).json(error)
+        }
         const salt = await bcryptjs.genSalt(10);
       
         let id=req.params.id
@@ -88,6 +98,6 @@ export const actualizarUsuario = async (req,res)=>{
         
     } catch (error) {
         res.status(500).json({'message': 'Error'+error.message})
-    }
+}
 
 }
