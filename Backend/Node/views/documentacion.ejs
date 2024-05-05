@@ -498,86 +498,6 @@
       </table> 
    </div>
     
-        <h1 class="titulo">Generar Estadistica</h1>
-        <div class="table-container">
-            <table>
-                <thead>
-                    <td>Nombre</td>
-                    <td>Descripcion</td>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>generar Estadistica</td>
-                        <td> 
-                        <p>
-                            este apartado es para traer valores de la base de datos con el fin de generar graficos 
-                        </p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>URL</td>
-                        <td>http://localhost:3000/estadistica <td>
-                    </tr>
-                    <tr>
-                        <td>Descripcion</td>
-                        <td>Este apartado estará en los diferentes módulos del sistema como los servicios permitirá ver una estadística en tiempo real donde se muestre:<br>
-                          •	Mes donde mas se alquilo el laboratorio <br>
-                          •	fincas  que mas se les hace proceso y cuales son esos procesos <br>
-                                     Esta estadística estaría reflejada en un diagrama de barras en cada uno de los diferentes módulos 
-                          </td>
-                    </tr>
-                    <tr>
-                        <td>Verbo HTTP</td>
-                        <td>get</td>
-                    </tr>
-                    <tr>
-                        <td>Header</td>
-                        <td>null</td>
-                    </tr>
-                    <tr>
-                        <td>Usuario</td>
-                        <td>Administrador,encargados</td>
-                    </tr>
-                    <tr>
-                        <td>Peticion Body</td>
-                        <td>null
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Respuesta Json</td>
-                        <td>Correcto:   res.status(200).json( {
-                          "cantidad": 33.33,<br>
-                          "fecha_muestra": "2024-04-08T05:00:00.000Z",<br>
-                          "nombre_finca": "el dorado",<br>
-                          "tipo_servicios": "tostion"<br>
-                        },<br>
-                        {<br>
-                          "cantidad": 44.55,<br>
-                          "fecha_muestra": "2024-04-10T05:00:00.000Z",<br>
-                          "nombre_finca": "el tigre",<br>
-                          "tipo_servicios": "trilla"<br>
-                        },<br>
-                        {<br>
-                          "cantidad": 20.366,<br>
-                          "fecha_muestra": "2024-04-05T05:00:00.000Z",<br>
-                          "nombre_finca": "consejo",<br>
-                          "tipo_servicios": "analisis fisico"<br>
-                        },<br>
-                        {<br>
-                          "cantidad": 20.366,<br>
-                          "fecha_muestra": "2024-04-05T05:00:00.000Z",<br>
-                          "nombre_finca": "consejo",<br>
-                          "tipo_servicios": "analisis sensorial"<br>
-                        }); <br><br>
-                            Incorrecto:  res.status(404).json({ message: "No se encontraron datos" }); <br><br>
-                            Error:  res.status(500).json({ message: "Error en la conexion"+error.message });
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            </div>
-
-            <br>
 
               
             
@@ -1370,6 +1290,376 @@
           
               
 
+
+
+
+
+
+
+            <h1 class="titulo">Requerimiento 07 Agendar laboratorio</h1>
+            <div class="table-container">
+            <table>
+                <thead>
+                    <td>Nombre</td>
+                    <td>Descripcion</td>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Agendar laboratorio</td>
+                        <td> 
+                        <p>
+                            El sistema proporcionará un formulario de registro para programar el laboratorio, <br>
+                            el usuario administrador será el encargado de rellenar y tomar los datos de la fecha <br>
+                            de alquiler, quién alquila el laboratorio, el estado de la programación y la fecha <br>
+                            final de la programación. <br>
+                        </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>URL</td>
+                        <td>http://localhost:3000/alquiler/registrarAlqui</td>
+                    </tr>
+                    <tr>
+                        <td>Descripcion</td>
+                        <td>Esta funcion permite al administrador realizar un registro de agendamiento</td>
+                    </tr>
+                    <tr>
+                        <td>Verbo HTTP</td>
+                        <td>POST</td>
+                    </tr>
+                    <tr>
+                        <td>Header</td>
+                        <td>Token: Administrador</td>
+                    </tr>
+                    <tr>
+                        <td>Usuario</td>
+                        <td>Administrador</td>
+                    </tr>
+                    <tr>
+                        <td>Peticion Body</td>
+                        <td>json: 	{ <br>
+                            "fecha_alquiler": "2024-04-30", <br>
+                            "fk_usuarios": 1, <br>
+                            "estado": "activo", <br>
+                            "fecha_fin": "2024-05-30" <br>
+                        } <br>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Respuesta Json</td>
+                        <td>Correcto: status:200.json({"message": "Se registró el alquiler de manera exitosa"}) <br>
+                            Incorrecto: status(404).json({"message": "No se pudo registrar el alquiler"}) <br>
+                            Error: status(500).json("message": "Error en alquiler controller: " + error.message)
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+             </div>
+        
+      <br>
+    
+    </table> 
+
+
+  
+
+
+
+
+
+
+
+<h1 class="titulo">Requerimiento 08 Listar Agendamientos</h1>
+<div class="table-container">
+<table>
+    <thead>
+        <td>Nombre</td>
+        <td>Descripcion</td>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Listar Agendamiento</td>
+            <td> 
+            <p>
+                El sistema mostrará los registros de los formularios, <br>
+                donde también verá la persona encargada de ese registro. <br>
+            </p>
+            </td>
+        </tr>
+        <tr>
+            <td>URL</td>
+            <td>http://localhost:3000/alquiler/listarAlqui</td>
+        </tr>
+        <tr>
+            <td>Descripcion</td>
+            <td>Esta funcion permite al administrador listar los registros de agendamiento</td>
+        </tr>
+        <tr>
+            <td>Verbo HTTP</td>
+            <td>GET</td>
+        </tr>
+        <tr>
+            <td>Header</td>
+            <td>Token: Administrador</td>
+        </tr>
+        <tr>
+            <td>Usuario</td>
+            <td>Administrador</td>
+        </tr>
+        <tr>
+            <td>Peticion Body</td>
+            <td>NULL</td>
+        </tr>
+        <tr>
+            <td>Respuesta Json</td>
+            <td>Correcto: status:200.json({ <br>
+                "id_alquiler": 6, <br>
+                "fecha_alquiler": "2024-04-30T05:00:00.000Z", <br>
+                "fk_usuarios": 1, <br>
+                "estado": "activo", <br>
+                "fecha_fin": "2024-05-30T05:00:00.000Z", <br>
+                "nombre_usuario": "miguel", <br>
+                "apellido_usuario": "lopez", <br>
+                "numero_identificacion": "1006459235", <br>
+                "tipo_documento": "cc" <br>
+            }) <br>
+                Incorrecto: status(404).json({"message": 'No se encontraron alquileres'}) <br>
+                Error: status(500).json("message": 'Error en el servidor: ' + error.message )
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+
+
+
+ </div>
+
+<br>
+</table> 
+
+
+  
+
+
+
+
+
+
+
+<h1 class="titulo">Requerimiento 09 Editar estado de agendamientos</h1>
+<div class="table-container">
+<table>
+    <thead>
+        <td>Nombre</td>
+        <td>Descripcion</td>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Listar estado de agendamiento</td>
+            <td> 
+            <p>
+                El sistema permitira al usuario administrador poder <br> 
+                cambiar el estado del agendamientos del laboratorio <br>
+            </p>
+            </td>
+        </tr>
+        <tr>
+            <td>URL</td>
+            <td>http://localhost:3000/alquiler/actualizarAlqui/:id_alquiler</td>
+        </tr>
+        <tr>
+            <td>Descripcion</td>
+            <td>Esta funcion permite al administrador editar el estado de los registros de agendamiento</td>
+        </tr>
+        <tr>
+            <td>Verbo HTTP</td>
+            <td>PUT</td>
+        </tr>
+        <tr>
+            <td>Header</td>
+            <td>Token: Administrador</td>
+        </tr>
+        <tr>
+            <td>Usuario</td>
+            <td>Administrador</td>
+        </tr>
+        <tr>
+            <td>Peticion Body</td>
+            <td> json: { <br>
+                "estado": "inactivo" <br>
+            } <br>
+        </td>
+        </tr>
+        <tr>
+            <td>Respuesta Json</td>
+            <td>Correcto: status:200.json({"message": "Alquiler actualizado"}) <br>
+                Incorrecto: status(404).json({"message": "Alquiler no actualizado"}) <br>
+                Error: status(500).json("message": "Error en el controlador alquiler: " + error.message ) <br>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+
+
+
+ </div>
+
+<br>
+
+</table> 
+
+
+  
+
+
+
+
+
+
+
+<h1 class="titulo">Requerimiento 10 Eliminar agendamientos</h1>
+<div class="table-container">
+<table>
+    <thead>
+        <td>Nombre</td>
+        <td>Descripcion</td>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Eliminar agendamiento</td>
+            <td> 
+            <p>
+                El sistema permitira al usuario administrador poder <br> 
+                eliminar agendamientos del laboratorio <br>
+            </p>
+            </td>
+        </tr>
+        <tr>
+            <td>URL</td>
+            <td>http://localhost:3000/alquiler/eliminarAlqui/:id_alquiler</td>
+        </tr>
+        <tr>
+            <td>Descripcion</td>
+            <td>Esta funcion permite al administrador eliminar los registros de agendamiento</td>
+        </tr>
+        <tr>
+            <td>Verbo HTTP</td>
+            <td>DELETE</td>
+        </tr>
+        <tr>
+            <td>Header</td>
+            <td>Token: Administrador</td>
+        </tr>
+        <tr>
+            <td>Usuario</td>
+            <td>Administrador</td>
+        </tr>
+        <tr>
+            <td>Peticion Body</td>
+            <td>NULL</td>
+        </tr>
+        <tr>
+            <td>Respuesta Json</td>
+            <td>Correcto: status:200.json({"message": "Alquiler eliminado con éxito"}) <br>
+                Incorrecto: status(404).json({"message": "No se encontró el alquiler para eliminar"}) <br>
+                Error: status(500).json("message": "Error al intentar eliminar el alquiler: " + error.message ) <br>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+
+
+
+ </div>
+
+<br>
+
+<h1 class="titulo">Requerimiento 15 Generar Estadistica</h1>
+<div class="table-container">
+    <table>
+        <thead>
+            <td>Nombre</td>
+            <td>Descripcion</td>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Generar Estadistica</td>
+                <td> 
+                <p>
+                    este apartado es para traer valores de la base de datos con el fin de generar graficos 
+                </p>
+                </td>
+            </tr>
+            <tr>
+                <td>URL</td>
+                <td>http://localhost:3000/estadistica <td>
+            </tr>
+            <tr>
+                <td>Descripcion</td>
+                <td>Este apartado estará en los diferentes módulos del sistema como los servicios permitirá ver una estadística en tiempo real donde se muestre:<br>
+                  •	Mes donde mas se alquilo el laboratorio <br>
+                  •	fincas  que mas se les hace proceso y cuales son esos procesos <br>
+                             Esta estadística estaría reflejada en un diagrama de barras en cada uno de los diferentes módulos 
+                  </td>
+            </tr>
+            <tr>
+                <td>Verbo HTTP</td>
+                <td>get</td>
+            </tr>
+            <tr>
+                <td>Header</td>
+                <td>TOKEN</td>
+            </tr>
+            <tr>
+                <td>Usuario</td>
+                <td>Administrador,encargados, invitados</td>
+            </tr>
+            <tr>
+                <td>Peticion Body</td>
+                <td>null
+                </td>
+            </tr>
+            <tr>
+                <td>Respuesta Json</td>
+                <td>Correcto:   res.status(200).json( {
+                  "cantidad": 33.33,<br>
+                  "fecha_muestra": "2024-04-08T05:00:00.000Z",<br>
+                  "nombre_finca": "el dorado",<br>
+                  "tipo_servicios": "tostion"<br>
+                },<br>
+                {<br>
+                  "cantidad": 44.55,<br>
+                  "fecha_muestra": "2024-04-10T05:00:00.000Z",<br>
+                  "nombre_finca": "el tigre",<br>
+                  "tipo_servicios": "trilla"<br>
+                },<br>
+                {<br>
+                  "cantidad": 20.366,<br>
+                  "fecha_muestra": "2024-04-05T05:00:00.000Z",<br>
+                  "nombre_finca": "consejo",<br>
+                  "tipo_servicios": "analisis fisico"<br>
+                },<br>
+                {<br>
+                  "cantidad": 20.366,<br>
+                  "fecha_muestra": "2024-04-05T05:00:00.000Z",<br>
+                  "nombre_finca": "consejo",<br>
+                  "tipo_servicios": "analisis sensorial"<br>
+                }); <br><br>
+                    Incorrecto:  res.status(404).json({ message: "No se encontraron datos" }); <br><br>
+                    Error:  res.status(500).json({ message: "Error en la conexion"+error.message });
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    </div>
+
+    <br>
             
   </section> 
 </div>
