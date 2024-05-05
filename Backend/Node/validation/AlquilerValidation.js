@@ -8,6 +8,6 @@ export const validateAlquilerLaboratorio = [
 ];
 
 export const validateEstadoAlquiler = [
-  check("estado", "El estado del alquiler es obligatorio y debe ser: activo, inactivo").not().isEmpty().isIn(["activo", "inactivo"]),
+  check("estado", "El estado del alquiler es obligatorio y debe ser uno de: activo, inactivo").not().isEmpty().isIn(["activo", "inactivo"]),
 
 ];
