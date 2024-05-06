@@ -30,17 +30,6 @@ export const registrarAlquiler = async (req, res) => {
             return res.status(400).json(error)
         }
         
-        // Obtenemos el token de la cabecera
-        let token = req.headers.token;
-        // Decodificamos el token
-        let decodedToken = jwt.decode(token);
-        // Verificamos el rol del usuario
-        let rol = decodedToken.user[0].rol_usuario;
-
-        // Verificamos si el usuario es administrador
-        if (rol !== "administrador") {
-            return res.status(401).json({ message: "No tienes permisos para realizar esta acción." });
-        }
 
         let { fecha_alquiler, fk_usuarios, estado, fecha_fin } = req.body;
 
@@ -60,18 +49,7 @@ export const registrarAlquiler = async (req, res) => {
 export const eliminarAlquiler = async (req, res) => {
     try {
         let id_alquiler = req.params.id_alquiler;
-        
-        // Obtener el token de la cabecera
-        let token = req.headers.token;
-        // Decodificar el token
-        let decodedToken = jwt.decode(token);
-        // Verificar el rol del usuario
-        let rol = decodedToken.user[0].rol_usuario;
 
-        // Verificar si el usuario es administrador
-        if (rol !== "administrador") {
-            return res.status(401).json({ message: "No tienes permisos para realizar esta acción." });
-        }
 
         let sql = `DELETE FROM alquiler_laboratorio WHERE id_alquiler=${id_alquiler}`;
         const [respuesta] = await conexion.query(sql);
@@ -93,17 +71,7 @@ export const actualizarAlquiler = async (req, res) => {
             return res.status(400).json(error)
         }
         
-        // Obtener el token de la cabecera
-        let token = req.headers.token;
-        // Decodificar el token
-        let decodedToken = jwt.decode(token);
-        // Verificar el rol del usuario
-        let rol = decodedToken.user[0].rol_usuario;
 
-        // Verificar si el usuario es administrador
-        if (rol !== "administrador") {
-            return res.status(401).json({ message: "No tienes permisos para realizar esta acción." });
-        }
 
         let id_alquiler = req.params.id_alquiler;
         let { estado} = req.body;
