@@ -38,7 +38,7 @@ export const validarUsuarios = async (req, res) => {
         let sql =`SELECT nombre_usuario, rol_usuario, contraseña_usuario FROM usuarios WHERE numero_identificacion='${numero_identificacion}'`
         const [resultado] = await conexion.query(sql);
 
-         console.log(resultado)
+                console.log(resultado)
         if (resultado.length > 0) {
             const user = resultado[0];
             const storedPasswordHash = user.contraseña_usuario;
