@@ -11,7 +11,9 @@
     <div class="container">
       <!-- requerimineto iniciar sesion Miguel -->
       <section>
-        <h1 class="titulo">requerimiento iniciar sesion</h1>
+
+        <br> 
+        <h1 class="titulo">RF01 requerimiento iniciar sesion</h1>
         <div class="table-container">
         <table>
             <thead>
@@ -78,8 +80,784 @@
          </div>
     
   <br>
+  <h1> RF02 requerimiento  registrar Usuarios </h1> 
+               
+  <div class="table-container"> 
+   <table> 
+  
+      <thead> 
+  
+          <td>Nombre</td> 
+  
+          <td>Descripcion</td> 
+  
+      </thead> 
+  
+      <tbody> 
+  
+          <tr> 
+  
+              <td>Administrar Usuarios</td> 
+  
+              <td>  
+  
+              <p> 
+  
+                  El administrador es responsable de supervisar el sistema y de llevar a <br> 
+  
+                  cabo cualquier modificación en los roles y documentos. <br> 
+  
+                  Se debe implementar una política de bloqueo de cuenta después de un número <br> 
+  
+                  específico de intentos fallidos de inicio de sesión. <br> 
+  
+                  El sistema debe permitir la creación de roles de usuario, solicitando la  <br> 
+  
+                  siguiente información al momento de crear un nuevo usuario: <br> 
+  
+                  •Nombre<br> 
+  
+                  •Apellidos <br> 
+  
+                  •Correo electrónico <br> 
+  
+                  •Número de teléfono <br> 
+  
+                  •Rol<br> 
+  
+                  •Contraseña<br> 
+  
+                  •Numero de identificacion  <br> 
+  
+                  •tipo de documento  <br>         
+  
+              </p> 
+  
+              </td> 
+  
+          </tr> 
+  
+          <tr> 
+  
+              <td>URL</td> 
+  
+              <td>http://localhost:3000/usuario/registrar</td> 
+  
+          </tr> 
+  
+          <tr> 
+  
+              <td>Descripcion</td> 
+  
+              <td>Esta funcion permite Registrar nuevos datos en la tabla usuarios de la base de datos</td> 
+  
+          </tr> 
+  
+          <tr> 
+  
+              <td>Verbo HTTP</td> 
+  
+              <td>POST</td> 
+  
+          </tr> 
+  
+          <tr> 
+  
+              <td>Header</td> 
+  
+              <td>null</td> 
+  
+          </tr> 
+  
+          <tr> 
+  
+              <td>Usuario</td> 
+  
+              <td>Administrador</td> 
+  
+          </tr> 
+  
+          <tr> 
+  
+              <td>Peticion Body</td> 
+  
+              <td> 
+  
+                  { <br> 
+  
+                      "nombre_usuario": "Daniel", <br> 
+  
+                      "apellido_usuario": "Yara", <br> 
+  
+                      "correo_electronico": "daniel@gmail.com", <br> 
+  
+                      "telefono_usuario": "3136156071", <br> 
+  
+                      "rol_usuario": "encargado", <br> 
+  
+                      "contraseña_usuario": "Daniel123", <br> 
+  
+                      "numero_identificacion": "1083860733", <br> 
+  
+                      "tipo_documento": "cc" <br> 
+  
+                  } <br> 
+  
+              </td> 
+  
+          </tr> 
+  
+          <tr> 
+  
+              <td>Respuesta Json</td> 
+  
+              <td>Correcto: status:200.json({'message':'Se registro el usuario con exito'}) <br><br> 
+  
+                  Incorrecto: status(404).json({'message':'No se pudo registrar el usuario'}) <br><br> 
+  
+                  Error: status(500).json({'message':'Error'+error.message}) 
+  
+              </td> 
+  
+          </tr> 
+  
+      </tbody> 
+  
+  </table> 
+</div>
+          
+<br> 
+               
+                
+                
+               
+<h1>RF03 listar</h1> 
 
-  <h1 class="titulo">Administrar Documentos (cargar,eliminar,actualizar,listar,buscar)</h1>
+ 
+ 
+
+<div class="table-container">
+               
+
+ <table> 
+
+    <thead> 
+
+        <td>Nombre</td> 
+
+        <td>Descripcion</td> 
+
+    </thead> 
+
+    <tbody> 
+
+        <tr> 
+
+            <td>Administrar Usuarios</td> 
+
+            <td>  
+
+            <p> 
+
+                El administrador es responsable de supervisar el sistema y de llevar a <br> 
+
+                cabo cualquier modificación en los roles y documentos. <br> 
+
+                Se debe implementar una política de bloqueo de cuenta después de un número <br> 
+
+                específico de intentos fallidos de inicio de sesión. <br> 
+
+                El sistema debe permitir la creación de roles de usuario, solicitando la  <br> 
+
+                siguiente información al momento de crear un nuevo usuario: <br> 
+
+                •Nombre<br> 
+
+                •Apellidos <br> 
+
+                •Correo electrónico <br> 
+
+                •Número de teléfono <br> 
+
+                •Rol<br> 
+
+                •Contraseña<br> 
+
+                •Numero de identificacion  <br> 
+
+                •tipo de documento  <br>         
+
+            </p> 
+
+            </td> 
+
+        </tr> 
+
+        <tr> 
+
+            <td>URL</td> 
+
+            <td>http://localhost:3000/usuario/listar</td> 
+
+        </tr> 
+
+        <tr> 
+
+            <td>Descripcion</td> 
+
+            <td>Esta funcion permite listar usuarios de la tabla usuarios de la base de datos</td> 
+
+        </tr> 
+
+        <tr> 
+
+            <td>Verbo HTTP</td> 
+
+            <td>GET</td> 
+
+        </tr> 
+
+        <tr> 
+
+            <td>Header</td> 
+
+            <td>token<br> 
+
+            </td> 
+
+        </tr> 
+
+        <tr> 
+
+            <td>Usuario</td> 
+
+            <td>Administrador</td> 
+
+        </tr> 
+
+        <tr> 
+
+            <td>Peticion Body</td> 
+
+            <td> 
+
+               null 
+
+            </td> 
+
+        </tr> 
+
+        <tr> 
+
+            <td>Respuesta Json</td> 
+
+            <td>Correcto: status:200.json(   <br> 
+
+            { <br> 
+
+                "id_usuario": 4, <br> 
+
+                "nombre_usuario": "Daniel",<br> 
+
+                "apellido_usuario": "Yara",<br> 
+
+                "correo_electronico": "daniel@gmail.com",<br> 
+
+                "telefono_usuario": "3136156071",<br> 
+
+                "rol_usuario": "encargado",<br> 
+
+                "contraseña_usuario": "Daniel123",<br> 
+
+                "numero_identificacion": "1083860733",<br> 
+
+                "tipo_documento": null <br> 
+
+            }) <br> 
+
+                Incorrecto: status(402).json({message:'No se encontraron usuarios'})<br><br> 
+
+                Error: status(402).json({message:'Error en el servidor'+error.message})
+
+            </td> 
+
+        </tr> 
+
+    </tbody> 
+
+</table> 
+</div>
+<br> 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+<h1>RF04 buscar usuario</h1> 
+
+ 
+ 
+
+<div class="table-container">
+               
+
+ <table> 
+
+    <thead> 
+
+        <td>Nombre</td> 
+
+        <td>Descripcion</td> 
+
+    </thead> 
+
+    <tbody> 
+
+        <tr> 
+
+            <td>Administrar Usuarios</td> 
+
+            <td>  
+
+            <p> 
+
+                El administrador es responsable de supervisar el sistema y de llevar a <br> 
+
+                cabo cualquier modificación en los roles y documentos. <br> 
+
+                Se debe implementar una política de bloqueo de cuenta después de un número <br> 
+
+                específico de intentos fallidos de inicio de sesión. <br> 
+
+                El sistema debe permitir la creación de roles de usuario, solicitando la  <br> 
+
+                siguiente información al momento de crear un nuevo usuario: <br> 
+
+                •Nombre<br> 
+
+                •Apellidos <br> 
+
+                •Correo electrónico <br> 
+
+                •Número de teléfono <br> 
+
+                •Rol<br> 
+
+                •Contraseña<br> 
+
+                •Numero de identificacion  <br> 
+
+                •tipo de documento  <br>         
+
+            </p> 
+
+            </td> 
+
+        </tr> 
+
+        <tr> 
+
+            <td>URL</td> 
+
+            <td>http://localhost:3000/usuario/listarid/:id</td> 
+
+        </tr> 
+
+        <tr> 
+
+            <td>Descripcion</td> 
+
+            <td>Esta funcion permite listar por id usuarios de la tabla usuarios de la base de datos</td> 
+
+        </tr> 
+
+        <tr> 
+
+            <td>Verbo HTTP</td> 
+
+            <td>GET</td> 
+
+        </tr> 
+
+        <tr> 
+
+            <td>Header</td> 
+
+            <td>token        
+            </td> 
+
+        </tr> 
+
+        <tr> 
+
+            <td>Usuario</td> 
+
+            <td>Administrador</td> 
+
+        </tr> 
+
+        <tr> 
+
+            <td>Peticion Body</td> 
+
+            <td> 
+
+               null 
+
+            </td> 
+
+        </tr> 
+
+        <tr> 
+
+            <td>Respuesta Json</td> 
+
+            <td>Correcto: status:200.json(   <br> 
+
+            { <br> 
+
+                "id_usuario": 4, <br> 
+
+                "nombre_usuario": "Daniel",<br> 
+
+                "apellido_usuario": "Yara",<br> 
+
+                "correo_electronico": "daniel@gmail.com",<br> 
+
+                "telefono_usuario": "3136156071",<br> 
+
+                "rol_usuario": "encargado",<br> 
+
+                "contraseña_usuario": "Daniel123",<br> 
+
+                "numero_identificacion": "1083860733",<br> 
+
+                "tipo_documento": null <br> 
+
+            }) <br> 
+
+                Incorrecto: status(402).json({'message':'El usuario no existe'})<br><br> 
+
+                Error: status(402).json({message:'Error en el servidor'+error.message}) 
+
+            </td> 
+
+        </tr> 
+
+    </tbody> 
+
+</table> 
+</div>
+<br> 
+
+ 
+ 
+ 
+
+<br> 
+
+ 
+ 
+
+<h1>RF05 actualizar</h1> 
+
+ 
+ 
+
+               
+ <div class="table-container">
+ <table> 
+
+    <thead> 
+
+        <td>Nombre</td> 
+
+        <td>Descripcion</td> 
+
+    </thead> 
+
+    <tbody> 
+
+        <tr> 
+
+            <td>Administrar Usuarios</td> 
+
+            <td>  
+
+            <p> 
+
+                El administrador es responsable de supervisar el sistema y de llevar a <br> 
+
+                cabo cualquier modificación en los roles y documentos. <br> 
+
+                Se debe implementar una política de bloqueo de cuenta después de un número <br> 
+
+                específico de intentos fallidos de inicio de sesión. <br> 
+
+                El sistema debe permitir la creación de roles de usuario, solicitando la  <br> 
+
+                siguiente información al momento de crear un nuevo usuario: <br> 
+
+                •Nombre<br> 
+
+                •Apellidos <br> 
+
+                •Correo electrónico <br> 
+
+                •Número de teléfono <br> 
+
+                •Rol<br> 
+
+                •Contraseña<br> 
+
+                •Numero de identificacion  <br> 
+
+                •tipo de documento  <br>         
+
+            </p> 
+
+            </td> 
+
+        </tr> 
+
+        <tr> 
+
+            <td>URL</td> 
+
+            <td>http://localhost:3000/usuario/actualizar/:id_usuario</td> 
+
+        </tr> 
+
+        <tr> 
+
+            <td>Descripcion</td> 
+
+            <td>Esta funcion permite actualizar nuevos datos en la tabla usuarios de la base de datos</td> 
+
+        </tr> 
+
+        <tr> 
+
+            <td>Verbo HTTP</td> 
+
+            <td>PUT</td> 
+
+        </tr> 
+
+        <tr> 
+
+            <td>Header</td> 
+
+            <td>token 
+
+            </td> 
+
+        </tr> 
+
+        <tr> 
+
+            <td>Usuario</td> 
+
+            <td>Administrador</td> 
+
+        </tr> 
+
+        <tr> 
+
+            <td>Peticion Body</td> 
+
+            <td> 
+
+                { <br> 
+
+                    "nombre_usuario": "Alejandro", <br> 
+
+                    "apellido_usuario": "Losada", <br> 
+
+                    "correo_electronico": "alejandro@gmail.com", <br> 
+
+                    "telefono_usuario": "3203460792", <br> 
+
+                    "rol_usuario": "encargado", <br> 
+
+                    "contraseña_usuario": "Alejandro", <br> 
+
+                    "numero_identificacion": "1083860733", <br> 
+
+                    "tipo_documento": null <br> 
+
+                } <br> 
+
+            </td> 
+
+        </tr> 
+
+        <tr> 
+
+            <td>Respuesta Json</td> 
+
+            <td>Correcto: status:200.json({'message':'Usuario actualizo'}) <br><br> 
+
+                Incorrecto: status(404).json({'message':'Usuario no actualizado'}) <br><br> 
+
+                Error: status(500).json({'message': 'Error'+error.message})
+
+            </td> 
+
+        </tr> 
+
+    </tbody> 
+
+</table> 
+</div>
+
+
+
+<br> 
+
+ 
+ 
+
+<h1>RF06 Eliminiar</h1> 
+
+ 
+ 
+
+ <div class="table-container">
+               
+
+ <table> 
+
+    <thead> 
+
+        <td>Nombre</td> 
+
+        <td>Descripcion</td> 
+
+    </thead> 
+
+    <tbody> 
+
+        <tr> 
+
+            <td>Administrar Usuarios</td> 
+
+            <td>  
+
+            <p> 
+
+                El administrador es responsable de supervisar el sistema y de llevar a <br> 
+
+                cabo cualquier modificación en los roles y documentos. <br> 
+
+                Se debe implementar una política de bloqueo de cuenta después de un número <br> 
+
+                específico de intentos fallidos de inicio de sesión. <br> 
+
+                El sistema debe permitir la creación de roles de usuario, solicitando la  <br> 
+
+                siguiente información al momento de crear un nuevo usuario: <br> 
+
+                •Nombre<br> 
+
+                •Apellidos <br> 
+
+                •Correo electrónico <br> 
+
+                •Número de teléfono <br> 
+
+                •Rol<br> 
+
+                •Contraseña<br> 
+
+                •Numero de identificacion  <br> 
+
+                •tipo de documento  <br>         
+
+            </p> 
+
+            </td> 
+
+        </tr> 
+
+        <tr> 
+
+            <td>URL</td> 
+
+            <td>http://localhost:3000/usuario/eliminar/:id_usuario</td> 
+
+        </tr> 
+
+        <tr> 
+
+            <td>Descripcion</td> 
+
+            <td>Esta funcion permite eliminar nuevos datos en la tabla usuarios de la base de datos</td> 
+
+        </tr> 
+
+        <tr> 
+
+            <td>Verbo HTTP</td> 
+
+            <td>DELETE</td> 
+
+        </tr> 
+
+        <tr> 
+
+            <td>Header</td> 
+
+            <td>token
+            </td> 
+
+        </tr> 
+
+        <tr> 
+
+            <td>Usuario</td> 
+
+            <td>Administrador</td> 
+
+        </tr> 
+
+        <tr> 
+
+            <td>Peticion Body</td> 
+
+            <td> 
+
+                null 
+
+            </td> 
+
+        </tr> 
+
+        <tr> 
+
+            <td>Respuesta Json</td> 
+
+            <td>Correcto: status:200.json({"message": "El usuario se elimiino con exito"}) <br><br> 
+
+                Incorrecto: status(402).json({"mensaje": "token invalido"}) <br><br> 
+
+                Error: status(500).json({"mensaje": "se requiere un token"}) 
+
+            </td> 
+
+        </tr> 
+
+    </tbody> 
+
+</table> 
+</div>
+
+  <h1 class="titulo">RF11 Administrar Documentos (cargar)</h1>
   <div class="table-container">
       <table>
           <thead>
@@ -114,7 +892,7 @@
               </tr>
               <tr>
                   <td>URL</td>
-                  <td>http://localhost:3000/docuemntos/registrar</td>
+                  <td>http://localhost:3000/documentos/registrar</td>
               </tr>
               <tr>
                   <td>Descripcion</td>
@@ -154,243 +932,8 @@
           </tbody>
       </table>
       </div>
-
       <br>
-   
-      <div class="table-container">
-        <table>
-            <thead>
-                <td>Nombre</td>
-                <td>Descripcion</td>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>listar documento</td>
-                    <td> 
-                    <p>
-                        este apartado se para  listar todos los docuemntos de la base datos de la tabla documentos 
-                    </p>
-                    </td>
-                </tr>
-                <tr>
-                    <td>URL</td>
-                    <td>http://localhost:3000/documentos/listar</td>
-                </tr>
-                <tr>
-                    <td>Descripcion</td>
-                    <td>Esta funcion permite lisatr datos  de la tabla docuemntos de la base de datos</td>
-                </tr>
-                <tr>
-                    <td>Verbo HTTP</td>
-                    <td>GET</td>
-                </tr>
-                <tr>
-                    <td>Header</td>
-                    <td>Token</td>
-                </tr>
-                <tr>
-                    <td>Usuario</td>
-                    <td>Administrador,encargados</td>
-                </tr>
-                <tr>
-                    <td>Peticion Body</td>
-                    <td>null
-                    </td>
-                </tr>
-                <tr>
-                    <td>Respuesta Json</td>
-                    <td>Correcto: status:200.json({<br>
-                        "id_documentos": 6,<br>
-                        "nombre": "procesos logicos",<br>
-                        "fecha_carga": "2024-04-27T05:00:00.000Z",<br>
-                        "fk_id_usuarios": 1,<br>
-                        "descripcion": "procesos logicos",<br>
-                        "formato": "pdf",<br>
-                        "estado": "activo"<br>
-                    })<br>
-                        Incorrecto: status(404).json({"message" : "No se encontraron docuemntos en la base de datos"})<br><br>
-                        Error: status(500).json({"message" : "Error en el controlador DocumentosController.js " + err})
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        </div>
- 
-     
-
-      <br>
-      
-      <div class="table-container">
-      <table>
-          <thead>
-              <td>Nombre</td>
-              <td>Descripcion</td>
-          </thead>
-          <tbody>
-              <tr>
-                  <td>actualizar documento</td>
-                  <td> 
-                  <p>
-                      este apartado es para  actualizar,  los datos de la tabla documentos 
-                  </p>
-                  </td>
-              </tr>
-              <tr>
-                  <td>URL</td>
-                  <td>http://localhost:3000/documentos/actualizar/2</td>
-              </tr>
-              <tr>
-                  <td>Descripcion</td>
-                  <td>Esta funcion permite actualizar un documento  por el id  de la tabla documentos de la base de datos</td>
-              </tr>
-              <tr>
-                  <td>Verbo HTTP</td>
-                  <td>PUT</td>
-              </tr>
-              <tr>
-                  <td>Header</td>
-                  <td>TOKEN</td>
-              </tr>
-              <tr>
-                  <td>Usuario</td>
-                  <td>Administrador,encargados</td>
-              </tr>
-              <tr>
-                  <td>Peticion Body</td>
-                  <td>{<br>
-                    "nombre":"procesos estrategicos", <br>
-                    "fecha_carga":"2024-05-04", <br>
-                    "fk_id_usuarios":1, <br>
-                    "descripcion":"datos estrategicos",<br>
-                    "formato":"word",<br>
-                    "estado":"activo"<br>
-                }<br>
-                  </td>
-              </tr>
-              <tr>
-                  <td>Respuesta Json</td>
-                  <td>Correcto: status:200.json({"message":"Se actualizó con éxito el documentos."})<br><br>
-                      Incorrecto: status(404).json({"message":"No se actualizó el documentos."}) <br><br>
-                      Error: status(500).json({"message":"error "+e.message})
-                  </td>
-              </tr>
-          </tbody>
-      </table>
-      </div>
-      <br>
-      <div class="table-container">
-        <table>
-            <thead>
-                <td>Nombre</td>
-                <td>Descripcion</td>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>eliminar documento</td>
-                    <td> 
-                    <p>
-                        este apartado se para  eliminar,  los datos de la tabla archivos 
-                    </p>
-                    </td>
-                </tr>
-                <tr>
-                    <td>URL</td>
-                    <td>http://localhost:3000/documentos/eliminar/2</td>
-                </tr>
-                <tr>
-                    <td>Descripcion</td>
-                    <td>Esta funcion permite actualizar un documento  por el id  de la tabla documentos de la base de datos</td>
-                </tr>
-                <tr>
-                    <td>Verbo HTTP</td>
-                    <td>DELETE</td>
-                </tr>
-                <tr>
-                    <td>Header</td>
-                    <td>TOKEN</td>
-                </tr>
-                <tr>
-                    <td>Usuario</td>
-                    <td>Administrador,encargados</td>
-                </tr>
-                <tr>
-                    <td>Peticion Body</td>
-                    <td>null
-                    </td>
-                </tr>
-                <tr>
-                    <td>Respuesta Json</td>
-                    <td>Correcto: status:200.json({"message":"Se elimino con éxito el documentos."})<br><br>
-                        Incorrecto: status(404).json({"message":"No se elimino el documentos."}) <br><br>
-                        Error: status(500).json({"message":"error "+e.message})
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        </div>
-      <br>
-
-      <div class="table-container">
-        <table>
-            <thead>
-                <td>Nombre</td>
-                <td>Descripcion</td>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>buscar documento</td>
-                    <td> 
-                    <p>
-                        este apartado se para  buscar,  los documentos  de la tabla Documentos 
-                    </p>
-                    </td>
-                </tr>
-                <tr>
-                    <td>URL</td>
-                    <td>http://localhost:3000/documentos/buscar/2</td>
-                </tr>
-                <tr>
-                    <td>Descripcion</td>
-                    <td>Esta funcion permite actualizar un documento  por el id  de la tabla documentos de la base de datos</td>
-                </tr>
-                <tr>
-                    <td>Verbo HTTP</td>
-                    <td>GET</td>
-                </tr>
-                <tr>
-                    <td>Header</td>
-                    <td>TOKEN</td>
-                </tr>
-                <tr>
-                    <td>Usuario</td>
-                    <td>Administrador,encargados</td>
-                </tr>
-                <tr>
-                    <td>Peticion Body</td>
-                    <td>null
-                    </td>
-                </tr>
-                <tr>
-                    <td>Respuesta Json</td>
-                    <td>Correcto: status:200.json({<br>
-                        "id_documentos": 2,<br>
-                        "nombre": "procesos estrategicos",<br>
-                        "fecha_carga": "2024-05-04T05:00:00.000Z",<br>
-                        "fk_id_usuarios": 1,<br>
-                        "descripcion": "asdasdas",<br>
-                        "formato": "word",<br>
-                        "estado": "activo"<br>
-                    })<br><br>
-                        Incorrecto: status(404).json({ "message": "No se ha encontrado el documento solicitado."}) <br><br>
-                        Error: status(500).json({"message":"error "+e.message})
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        </div>
-
-      <br>
-      <h1>requerimiento actulizar estado del documentos y aprobar </h1> 
+      <h1>RF12 requerimiento actulizar estado del documentos y aprobar </h1> 
                      
       <div class="table-container">
        <table> 
@@ -497,6 +1040,243 @@
       
       </table> 
    </div>
+
+      <br>
+   
+      <div class="table-container">
+        <table>
+            <thead>
+                <td>Nombre</td>
+                <td>Descripcion</td>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>RF013 listar documento</td>
+                    <td> 
+                    <p>
+                        este apartado se para  listar todos los docuemntos de la base datos de la tabla documentos 
+                    </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>URL</td>
+                    <td>http://localhost:3000/documentos/listar</td>
+                </tr>
+                <tr>
+                    <td>Descripcion</td>
+                    <td>Esta funcion permite lisatr datos  de la tabla docuemntos de la base de datos</td>
+                </tr>
+                <tr>
+                    <td>Verbo HTTP</td>
+                    <td>GET</td>
+                </tr>
+                <tr>
+                    <td>Header</td>
+                    <td>Token</td>
+                </tr>
+                <tr>
+                    <td>Usuario</td>
+                    <td>Administrador,encargados</td>
+                </tr>
+                <tr>
+                    <td>Peticion Body</td>
+                    <td>null
+                    </td>
+                </tr>
+                <tr>
+                    <td>Respuesta Json</td>
+                    <td>Correcto: status:200.json({<br>
+                        "id_documentos": 6,<br>
+                        "nombre": "procesos logicos",<br>
+                        "fecha_carga": "2024-04-27T05:00:00.000Z",<br>
+                        "fk_id_usuarios": 1,<br>
+                        "descripcion": "procesos logicos",<br>
+                        "formato": "pdf",<br>
+                        "estado": "activo"<br>
+                    })<br>
+                        Incorrecto: status(404).json({"message" : "No se encontraron docuemntos en la base de datos"})<br><br>
+                        Error: status(500).json({"message" : "Error en el controlador DocumentosController.js " + err})
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+ 
+     
+
+      <br>
+      
+
+      <br>
+
+      <div class="table-container">
+        <table>
+            <thead>
+                <td>Nombre</td>
+                <td>Descripcion</td>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>RF14 buscar documento</td>
+                    <td> 
+                    <p>
+                        este apartado se para  buscar,  los documentos  de la tabla Documentos 
+                    </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>URL</td>
+                    <td>http://localhost:3000/documentos/buscar/2</td>
+                </tr>
+                <tr>
+                    <td>Descripcion</td>
+                    <td>Esta funcion permite actualizar un documento  por el id  de la tabla documentos de la base de datos</td>
+                </tr>
+                <tr>
+                    <td>Verbo HTTP</td>
+                    <td>GET</td>
+                </tr>
+                <tr>
+                    <td>Header</td>
+                    <td>TOKEN</td>
+                </tr>
+                <tr>
+                    <td>Usuario</td>
+                    <td>Administrador,encargados</td>
+                </tr>
+                <tr>
+                    <td>Peticion Body</td>
+                    <td>null
+                    </td>
+                </tr>
+                <tr>
+                    <td>Respuesta Json</td>
+                    <td>Correcto: status:200.json({<br>
+                        "id_documentos": 2,<br>
+                        "nombre": "procesos estrategicos",<br>
+                        "fecha_carga": "2024-05-04T05:00:00.000Z",<br>
+                        "fk_id_usuarios": 1,<br>
+                        "descripcion": "asdasdas",<br>
+                        "formato": "word",<br>
+                        "estado": "activo"<br>
+                    })<br><br>
+                        Incorrecto: status(404).json({ "message": "No se ha encontrado el documento solicitado."}) <br><br>
+                        Error: status(500).json({"message":"error "+e.message})
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+
+      <br>
+      <div class="table-container">
+        <table>
+            <thead>
+                <td>Nombre</td>
+                <td>Descripcion</td>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>RF15 actualizar documento</td>
+                    <td> 
+                    <p>
+                        este apartado es para  actualizar,  los datos de la tabla documentos 
+                    </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>URL</td>
+                    <td>http://localhost:3000/documentos/actualizar/2</td>
+                </tr>
+                <tr>
+                    <td>Descripcion</td>
+                    <td>Esta funcion permite actualizar un documento  por el id  de la tabla documentos de la base de datos</td>
+                </tr>
+                <tr>
+                    <td>Verbo HTTP</td>
+                    <td>PUT</td>
+                </tr>
+                <tr>
+                    <td>Header</td>
+                    <td>TOKEN</td>
+                </tr>
+                <tr>
+                    <td>Usuario</td>
+                    <td>Administrador,encargados</td>
+                </tr>
+                <tr>
+                    <td>Peticion Body</td>
+                    <td>{<br>
+                      "nombre":"procesos estrategicos", <br>
+                      "fecha_carga":"2024-05-04", <br>
+                      "fk_id_usuarios":1, <br>
+                      "descripcion":"datos estrategicos",<br>
+                      "formato":"word",<br>
+                      "estado":"activo"<br>
+                  }<br>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Respuesta Json</td>
+                    <td>Correcto: status:200.json({"message":"Se actualizó con éxito el documentos."})<br><br>
+                        Incorrecto: status(404).json({"message":"No se actualizó el documentos."}) <br><br>
+                        Error: status(500).json({"message":"error "+e.message})
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+        <br>
+        <div class="table-container">
+          <table>
+              <thead>
+                  <td>Nombre</td>
+                  <td>Descripcion</td>
+              </thead>
+              <tbody>
+                  <tr>
+                      <td>RF16 eliminar documento</td>
+                      <td> 
+                      <p>
+                          este apartado se para  eliminar,  los datos de la tabla archivos 
+                      </p>
+                      </td>
+                  </tr>
+                  <tr>
+                      <td>URL</td>
+                      <td>http://localhost:3000/documentos/eliminar/2</td>
+                  </tr>
+                  <tr>
+                      <td>Descripcion</td>
+                      <td>Esta funcion permite actualizar un documento  por el id  de la tabla documentos de la base de datos</td>
+                  </tr>
+                  <tr>
+                      <td>Verbo HTTP</td>
+                      <td>DELETE</td>
+                  </tr>
+                  <tr>
+                      <td>Header</td>
+                      <td>TOKEN</td>
+                  </tr>
+                  <tr>
+                      <td>Usuario</td>
+                      <td>Administrador,encargados</td>
+                  </tr>
+                  <tr>
+                      <td>Peticion Body</td>
+                      <td>null
+                      </td>
+                  </tr>
+                  <tr>
+                      <td>Respuesta Json</td>
+                      <td>Correcto: status:200.json({"message":"Se elimino con éxito el documentos."})<br><br>
+                          Incorrecto: status(404).json({"message":"No se elimino el documentos."}) <br><br>
+                          Error: status(500).json({"message":"error "+e.message})
+                      </td>
+                  </tr>
+              </tbody>
+          </table>
+          </div>
     
         <h1 class="titulo">Generar Estadistica</h1>
         <div class="table-container">
@@ -580,793 +1360,16 @@
             <br>
 
               
-            
-    
-               <br> 
-               <h1>requerimiento  Administrar Usuarios (registrar,actualizar,eliminar,buscar,listar)</h1> 
-               
-               <div class="table-container"> 
-                <table> 
-               
-                   <thead> 
-               
-                       <td>Nombre</td> 
-               
-                       <td>Descripcion</td> 
-               
-                   </thead> 
-               
-                   <tbody> 
-               
-                       <tr> 
-               
-                           <td>Administrar Usuarios</td> 
-               
-                           <td>  
-               
-                           <p> 
-               
-                               El administrador es responsable de supervisar el sistema y de llevar a <br> 
-               
-                               cabo cualquier modificación en los roles y documentos. <br> 
-               
-                               Se debe implementar una política de bloqueo de cuenta después de un número <br> 
-               
-                               específico de intentos fallidos de inicio de sesión. <br> 
-               
-                               El sistema debe permitir la creación de roles de usuario, solicitando la  <br> 
-               
-                               siguiente información al momento de crear un nuevo usuario: <br> 
-               
-                               •Nombre<br> 
-               
-                               •Apellidos <br> 
-               
-                               •Correo electrónico <br> 
-               
-                               •Número de teléfono <br> 
-               
-                               •Rol<br> 
-               
-                               •Contraseña<br> 
-               
-                               •Numero de identificacion  <br> 
-               
-                               •tipo de documento  <br>         
-               
-                           </p> 
-               
-                           </td> 
-               
-                       </tr> 
-               
-                       <tr> 
-               
-                           <td>URL</td> 
-               
-                           <td>http://localhost:3000/usuario/registrar</td> 
-               
-                       </tr> 
-               
-                       <tr> 
-               
-                           <td>Descripcion</td> 
-               
-                           <td>Esta funcion permite Registrar nuevos datos en la tabla usuarios de la base de datos</td> 
-               
-                       </tr> 
-               
-                       <tr> 
-               
-                           <td>Verbo HTTP</td> 
-               
-                           <td>POST</td> 
-               
-                       </tr> 
-               
-                       <tr> 
-               
-                           <td>Header</td> 
-               
-                           <td>token</td> 
-               
-                       </tr> 
-               
-                       <tr> 
-               
-                           <td>Usuario</td> 
-               
-                           <td>Administrador</td> 
-               
-                       </tr> 
-               
-                       <tr> 
-               
-                           <td>Peticion Body</td> 
-               
-                           <td> 
-               
-                               { <br> 
-               
-                                   "nombre_usuario": "Daniel", <br> 
-               
-                                   "apellido_usuario": "Yara", <br> 
-               
-                                   "correo_electronico": "daniel@gmail.com", <br> 
-               
-                                   "telefono_usuario": "3136156071", <br> 
-               
-                                   "rol_usuario": "encargado", <br> 
-               
-                                   "contraseña_usuario": "Daniel123", <br> 
-               
-                                   "numero_identificacion": "1083860733", <br> 
-               
-                                   "tipo_documento": "cc" <br> 
-               
-                               } <br> 
-               
-                           </td> 
-               
-                       </tr> 
-               
-                       <tr> 
-               
-                           <td>Respuesta Json</td> 
-               
-                           <td>Correcto: status:200.json({'message':'Se registro el usuario con exito'}) <br><br> 
-               
-                               Incorrecto: status(404).json({'message':'No se pudo registrar el usuario'}) <br><br> 
-               
-                               Error: status(500).json({'message':'Error'+error.message}) 
-               
-                           </td> 
-               
-                       </tr> 
-               
-                   </tbody> 
-               
-               </table> 
-            </div>
-               <br> 
+        
+             
 
 
         
-               <br> 
+    
                
                 
             
-               
-               <br> 
-               
-                
-                
-               
-               <h1>listar</h1> 
-               
-                
-                
-               
-               <div class="table-container">
-                              
-               
-                <table> 
-               
-                   <thead> 
-               
-                       <td>Nombre</td> 
-               
-                       <td>Descripcion</td> 
-               
-                   </thead> 
-               
-                   <tbody> 
-               
-                       <tr> 
-               
-                           <td>Administrar Usuarios</td> 
-               
-                           <td>  
-               
-                           <p> 
-               
-                               El administrador es responsable de supervisar el sistema y de llevar a <br> 
-               
-                               cabo cualquier modificación en los roles y documentos. <br> 
-               
-                               Se debe implementar una política de bloqueo de cuenta después de un número <br> 
-               
-                               específico de intentos fallidos de inicio de sesión. <br> 
-               
-                               El sistema debe permitir la creación de roles de usuario, solicitando la  <br> 
-               
-                               siguiente información al momento de crear un nuevo usuario: <br> 
-               
-                               •Nombre<br> 
-               
-                               •Apellidos <br> 
-               
-                               •Correo electrónico <br> 
-               
-                               •Número de teléfono <br> 
-               
-                               •Rol<br> 
-               
-                               •Contraseña<br> 
-               
-                               •Numero de identificacion  <br> 
-               
-                               •tipo de documento  <br>         
-               
-                           </p> 
-               
-                           </td> 
-               
-                       </tr> 
-               
-                       <tr> 
-               
-                           <td>URL</td> 
-               
-                           <td>http://localhost:3000/usuario/listar</td> 
-               
-                       </tr> 
-               
-                       <tr> 
-               
-                           <td>Descripcion</td> 
-               
-                           <td>Esta funcion permite listar usuarios de la tabla usuarios de la base de datos</td> 
-               
-                       </tr> 
-               
-                       <tr> 
-               
-                           <td>Verbo HTTP</td> 
-               
-                           <td>GET</td> 
-               
-                       </tr> 
-               
-                       <tr> 
-               
-                           <td>Header</td> 
-               
-                           <td>token<br> 
-               
-                           </td> 
-               
-                       </tr> 
-               
-                       <tr> 
-               
-                           <td>Usuario</td> 
-               
-                           <td>Administrador</td> 
-               
-                       </tr> 
-               
-                       <tr> 
-               
-                           <td>Peticion Body</td> 
-               
-                           <td> 
-               
-                              null 
-               
-                           </td> 
-               
-                       </tr> 
-               
-                       <tr> 
-               
-                           <td>Respuesta Json</td> 
-               
-                           <td>Correcto: status:200.json(   <br> 
-               
-                           { <br> 
-               
-                               "id_usuario": 4, <br> 
-               
-                               "nombre_usuario": "Daniel",<br> 
-               
-                               "apellido_usuario": "Yara",<br> 
-               
-                               "correo_electronico": "daniel@gmail.com",<br> 
-               
-                               "telefono_usuario": "3136156071",<br> 
-               
-                               "rol_usuario": "encargado",<br> 
-               
-                               "contraseña_usuario": "Daniel123",<br> 
-               
-                               "numero_identificacion": "1083860733",<br> 
-               
-                               "tipo_documento": null <br> 
-               
-                           }) <br> 
-               
-                               Incorrecto: status(402).json({message:'No se encontraron usuarios'})<br><br> 
-               
-                               Error: status(402).json({message:'Error en el servidor'+error.message})
-               
-                           </td> 
-               
-                       </tr> 
-               
-                   </tbody> 
-               
-               </table> 
-            </div>
-               <br> 
-               
-                
-                
-                
-                
-                
-                
-                
-                
-               
-               <h1>buscar usuario</h1> 
-               
-                
-                
-               
-               <div class="table-container">
-                              
-               
-                <table> 
-               
-                   <thead> 
-               
-                       <td>Nombre</td> 
-               
-                       <td>Descripcion</td> 
-               
-                   </thead> 
-               
-                   <tbody> 
-               
-                       <tr> 
-               
-                           <td>Administrar Usuarios</td> 
-               
-                           <td>  
-               
-                           <p> 
-               
-                               El administrador es responsable de supervisar el sistema y de llevar a <br> 
-               
-                               cabo cualquier modificación en los roles y documentos. <br> 
-               
-                               Se debe implementar una política de bloqueo de cuenta después de un número <br> 
-               
-                               específico de intentos fallidos de inicio de sesión. <br> 
-               
-                               El sistema debe permitir la creación de roles de usuario, solicitando la  <br> 
-               
-                               siguiente información al momento de crear un nuevo usuario: <br> 
-               
-                               •Nombre<br> 
-               
-                               •Apellidos <br> 
-               
-                               •Correo electrónico <br> 
-               
-                               •Número de teléfono <br> 
-               
-                               •Rol<br> 
-               
-                               •Contraseña<br> 
-               
-                               •Numero de identificacion  <br> 
-               
-                               •tipo de documento  <br>         
-               
-                           </p> 
-               
-                           </td> 
-               
-                       </tr> 
-               
-                       <tr> 
-               
-                           <td>URL</td> 
-               
-                           <td>http://localhost:3000/usuario/listarid/:id</td> 
-               
-                       </tr> 
-               
-                       <tr> 
-               
-                           <td>Descripcion</td> 
-               
-                           <td>Esta funcion permite listar por id usuarios de la tabla usuarios de la base de datos</td> 
-               
-                       </tr> 
-               
-                       <tr> 
-               
-                           <td>Verbo HTTP</td> 
-               
-                           <td>GET</td> 
-               
-                       </tr> 
-               
-                       <tr> 
-               
-                           <td>Header</td> 
-               
-                           <td>token        
-                           </td> 
-               
-                       </tr> 
-               
-                       <tr> 
-               
-                           <td>Usuario</td> 
-               
-                           <td>Administrador</td> 
-               
-                       </tr> 
-               
-                       <tr> 
-               
-                           <td>Peticion Body</td> 
-               
-                           <td> 
-               
-                              null 
-               
-                           </td> 
-               
-                       </tr> 
-               
-                       <tr> 
-               
-                           <td>Respuesta Json</td> 
-               
-                           <td>Correcto: status:200.json(   <br> 
-               
-                           { <br> 
-               
-                               "id_usuario": 4, <br> 
-               
-                               "nombre_usuario": "Daniel",<br> 
-               
-                               "apellido_usuario": "Yara",<br> 
-               
-                               "correo_electronico": "daniel@gmail.com",<br> 
-               
-                               "telefono_usuario": "3136156071",<br> 
-               
-                               "rol_usuario": "encargado",<br> 
-               
-                               "contraseña_usuario": "Daniel123",<br> 
-               
-                               "numero_identificacion": "1083860733",<br> 
-               
-                               "tipo_documento": null <br> 
-               
-                           }) <br> 
-               
-                               Incorrecto: status(402).json({'message':'El usuario no existe'})<br><br> 
-               
-                               Error: status(402).json({message:'Error en el servidor'+error.message}) 
-               
-                           </td> 
-               
-                       </tr> 
-               
-                   </tbody> 
-               
-               </table> 
-            </div>
-               <br> 
-               
-                
-                
-                
-               
-               <br> 
-               
-                
-                
-               
-               <h1>actualizar</h1> 
-               
-                
-                
-               
-                              
-                <div class="table-container">
-                <table> 
-               
-                   <thead> 
-               
-                       <td>Nombre</td> 
-               
-                       <td>Descripcion</td> 
-               
-                   </thead> 
-               
-                   <tbody> 
-               
-                       <tr> 
-               
-                           <td>Administrar Usuarios</td> 
-               
-                           <td>  
-               
-                           <p> 
-               
-                               El administrador es responsable de supervisar el sistema y de llevar a <br> 
-               
-                               cabo cualquier modificación en los roles y documentos. <br> 
-               
-                               Se debe implementar una política de bloqueo de cuenta después de un número <br> 
-               
-                               específico de intentos fallidos de inicio de sesión. <br> 
-               
-                               El sistema debe permitir la creación de roles de usuario, solicitando la  <br> 
-               
-                               siguiente información al momento de crear un nuevo usuario: <br> 
-               
-                               •Nombre<br> 
-               
-                               •Apellidos <br> 
-               
-                               •Correo electrónico <br> 
-               
-                               •Número de teléfono <br> 
-               
-                               •Rol<br> 
-               
-                               •Contraseña<br> 
-               
-                               •Numero de identificacion  <br> 
-               
-                               •tipo de documento  <br>         
-               
-                           </p> 
-               
-                           </td> 
-               
-                       </tr> 
-               
-                       <tr> 
-               
-                           <td>URL</td> 
-               
-                           <td>http://localhost:3000/usuario/actualizar/:id_usuario</td> 
-               
-                       </tr> 
-               
-                       <tr> 
-               
-                           <td>Descripcion</td> 
-               
-                           <td>Esta funcion permite actualizar nuevos datos en la tabla usuarios de la base de datos</td> 
-               
-                       </tr> 
-               
-                       <tr> 
-               
-                           <td>Verbo HTTP</td> 
-               
-                           <td>PUT</td> 
-               
-                       </tr> 
-               
-                       <tr> 
-               
-                           <td>Header</td> 
-               
-                           <td>token 
-               
-                           </td> 
-               
-                       </tr> 
-               
-                       <tr> 
-               
-                           <td>Usuario</td> 
-               
-                           <td>Administrador</td> 
-               
-                       </tr> 
-               
-                       <tr> 
-               
-                           <td>Peticion Body</td> 
-               
-                           <td> 
-               
-                               { <br> 
-               
-                                   "nombre_usuario": "Alejandro", <br> 
-               
-                                   "apellido_usuario": "Losada", <br> 
-               
-                                   "correo_electronico": "alejandro@gmail.com", <br> 
-               
-                                   "telefono_usuario": "3203460792", <br> 
-               
-                                   "rol_usuario": "encargado", <br> 
-               
-                                   "contraseña_usuario": "Alejandro", <br> 
-               
-                                   "numero_identificacion": "1083860733", <br> 
-               
-                                   "tipo_documento": null <br> 
-               
-                               } <br> 
-               
-                           </td> 
-               
-                       </tr> 
-               
-                       <tr> 
-               
-                           <td>Respuesta Json</td> 
-               
-                           <td>Correcto: status:200.json({'message':'Usuario actualizo'}) <br><br> 
-               
-                               Incorrecto: status(404).json({'message':'Usuario no actualizado'}) <br><br> 
-               
-                               Error: status(500).json({'message': 'Error'+error.message})
-               
-                           </td> 
-               
-                       </tr> 
-               
-                   </tbody> 
-               
-               </table> 
-            </div>
-
-
-               
-               <br> 
-               
-                
-                
-               
-               <h1>Eliminiar</h1> 
-               
-                
-                
-               
-                <div class="table-container">
-                              
-               
-                <table> 
-               
-                   <thead> 
-               
-                       <td>Nombre</td> 
-               
-                       <td>Descripcion</td> 
-               
-                   </thead> 
-               
-                   <tbody> 
-               
-                       <tr> 
-               
-                           <td>Administrar Usuarios</td> 
-               
-                           <td>  
-               
-                           <p> 
-               
-                               El administrador es responsable de supervisar el sistema y de llevar a <br> 
-               
-                               cabo cualquier modificación en los roles y documentos. <br> 
-               
-                               Se debe implementar una política de bloqueo de cuenta después de un número <br> 
-               
-                               específico de intentos fallidos de inicio de sesión. <br> 
-               
-                               El sistema debe permitir la creación de roles de usuario, solicitando la  <br> 
-               
-                               siguiente información al momento de crear un nuevo usuario: <br> 
-               
-                               •Nombre<br> 
-               
-                               •Apellidos <br> 
-               
-                               •Correo electrónico <br> 
-               
-                               •Número de teléfono <br> 
-               
-                               •Rol<br> 
-               
-                               •Contraseña<br> 
-               
-                               •Numero de identificacion  <br> 
-               
-                               •tipo de documento  <br>         
-               
-                           </p> 
-               
-                           </td> 
-               
-                       </tr> 
-               
-                       <tr> 
-               
-                           <td>URL</td> 
-               
-                           <td>http://localhost:3000/usuario/eliminar/:id_usuario</td> 
-               
-                       </tr> 
-               
-                       <tr> 
-               
-                           <td>Descripcion</td> 
-               
-                           <td>Esta funcion permite eliminar nuevos datos en la tabla usuarios de la base de datos</td> 
-               
-                       </tr> 
-               
-                       <tr> 
-               
-                           <td>Verbo HTTP</td> 
-               
-                           <td>DELETE</td> 
-               
-                       </tr> 
-               
-                       <tr> 
-               
-                           <td>Header</td> 
-               
-                           <td>token
-                           </td> 
-               
-                       </tr> 
-               
-                       <tr> 
-               
-                           <td>Usuario</td> 
-               
-                           <td>Administrador</td> 
-               
-                       </tr> 
-               
-                       <tr> 
-               
-                           <td>Peticion Body</td> 
-               
-                           <td> 
-               
-                               null 
-               
-                           </td> 
-               
-                       </tr> 
-               
-                       <tr> 
-               
-                           <td>Respuesta Json</td> 
-               
-                           <td>Correcto: status:200.json({"message": "El usuario se elimiino con exito"}) <br><br> 
-               
-                               Incorrecto: status(402).json({"mensaje": "token invalido"}) <br><br> 
-               
-                               Error: status(500).json({"mensaje": "se requiere un token"}) 
-               
-                           </td> 
-               
-                       </tr> 
-               
-                   </tbody> 
-               
-               </table> 
-            </div>
+     
           
               
 
