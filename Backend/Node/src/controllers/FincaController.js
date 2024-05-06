@@ -12,7 +12,7 @@ export const listarfincas = async (req, res) => {
         res.status(500).json({"message" : "Error en el controlador FincaController.js " + err})
     }
 }
-
+//    registrar
 export const registrarFincas = async (req, res) => {
     try {
         let {nombre_finca, fk_id_municipio, fk_id_usuario} = req.body
