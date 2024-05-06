@@ -11,6 +11,8 @@ import rutaDatos from "./src/routes/DatosRouters.js";
 import cors from "cors"; 
 import RutaAuth from "./src/routes/AutonteficacionRoutes.js";
 import EstadisticaRouter from "./src/routes/EstadisticaRouters.js";
+import rutaServicios from "./src/routes/serviciosRoute.js";
+
 const servidor = express(); 
 servidor.use(bodyParser.json());
 servidor.use(bodyParser.urlencoded({ extended: true }));
@@ -32,6 +34,7 @@ servidor.use('/usuario', rutaUsuario);
 servidor.use('/detalle', rutaDetalle);
 servidor.use('/finca', rutaFinca);
 servidor.use('/datos', rutaDatos);
+servidor.use('/servicios',rutaServicios)
 
 servidor.use(EstadisticaRouter)
 servidor.use(RutaAuth)

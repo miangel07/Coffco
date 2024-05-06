@@ -17,13 +17,13 @@ export const RegistrarDatos=async(req,res)=> {
         values ('${nombre}','${tipo}','${estado},'${fk_id_formato}')`
         const [respuesta] = await conexion.query(sql)
         if(respuesta.affectedRows>0){
-            return res.status(200).json({"menssage":"se registro correctamente el usuario"})
+            return res.status(200).json({"menssage":"dato registrado exitosamente"})
         }
         else {
-            return res.status(404).json({"mensagge":"no se registro el usuario"})
+            return res.status(404).json({"mensagge":"dato no registrado"})
         }
     } catch (error) {
-        return res.status(404).json({"menssage":"error al conectar a la base de datos"})
+        return res.status(500).json({"menssage":"error al conectar a la base de datos"+error.message})
     }
 }
 export const ActualizarDatos = async(req,res) => {
