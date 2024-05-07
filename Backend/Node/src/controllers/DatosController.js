@@ -19,9 +19,9 @@ export const RegistrarDatos=async(req,res)=> {
             return res.status(400).json(error)
         }
         let{nombre,tipo,estado,fk_id_formato}=req.body
-        let sql = `insert into muestra(nombre,tipo,estado,fk_id_formato)
-        values ('${nombre}','${tipo}','${estado},'${fk_id_formato}')`
-        const [respuesta] = await conexion.query(sql)
+        console.log(nombre,tipo,estado,fk_id_formato)
+        let sql = `insert into datos (nombre,tipo,estado,fk_id_formato) values (?,?,?,?)`
+        const [respuesta] = await conexion.query(sql,[nombre,tipo,estado,fk_id_formato])
         if(respuesta.affectedRows>0){
             return res.status(200).json({"menssage":"dato registrado exitosamente"})
         }
