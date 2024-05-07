@@ -1,4 +1,5 @@
 import {conexion} from "../database/conexion.js"
+import { validationResult } from "express-validator"
 
 export const ListarMunicipio =async(req,res)=>{
     try {
@@ -17,6 +18,11 @@ export const ListarMunicipio =async(req,res)=>{
 
 export const RegistrarMunicipio=async(req,res)=>{
     try {
+        const error = validationResult(req)
+        if(!error.isEmpty()){
+            return res.status(400).json(error)
+        }
+        
         let {nombre_municipio}=req.body
         let sql =`insert into municipio (nombre_municipio) values('${nombre_municipio}')`
         const [respuesta]=await conexion.query(sql)
