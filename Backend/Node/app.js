@@ -11,7 +11,13 @@ import rutaDatos from "./src/routes/DatosRouters.js";
 import cors from "cors"; 
 import RutaAuth from "./src/routes/AutonteficacionRoutes.js";
 import EstadisticaRouter from "./src/routes/EstadisticaRouters.js";
+
 import rutaAlquiler from "./src/routes/AlquilerRoute.js";
+
+import rutaServicios from "./src/routes/serviciosRoute.js";
+import rutaTipoFormato from "./src/routes/tipoFormatoRoute.js";
+
+
 const servidor = express(); 
 servidor.use(bodyParser.json());
 servidor.use(bodyParser.urlencoded({ extended: true }));
@@ -34,6 +40,9 @@ servidor.use('/detalle', rutaDetalle);
 servidor.use('/finca', rutaFinca);
 servidor.use('/datos', rutaDatos);
 servidor.use('/alquiler', rutaAlquiler);
+servidor.use('/servicios',rutaServicios)
+servidor.use('/tipoformato',rutaTipoFormato)
+
 
 servidor.use(EstadisticaRouter)
 servidor.use(RutaAuth)

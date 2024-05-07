@@ -629,7 +629,7 @@
 
             <td>URL</td> 
 
-            <td>http://localhost:3000/usuario/actualizar/:id_usuario</td> 
+            <td>http://localhost:3000/usuario/actualizar/:id</td> 
 
         </tr> 
 
@@ -689,7 +689,7 @@
 
                     "numero_identificacion": "1083860733", <br> 
 
-                    "tipo_documento": null <br> 
+                    "tipo_documento": "cc" <br> 
 
                 } <br> 
 
@@ -1152,7 +1152,7 @@
               </tr>
               <tr>
                   <td>Header</td>
-                  <td>null</td>
+                  <td>token</td>
               </tr>
               <tr>
                   <td>Usuario</td>
@@ -1290,7 +1290,7 @@
    </div>
 
       <br>
-   
+      <h1>RF013 listar documento </h1> 
       <div class="table-container">
         <table>
             <thead>
@@ -1356,7 +1356,7 @@
       
 
       <br>
-
+      <h1>RF14 buscar documento</h1> 
       <div class="table-container">
         <table>
             <thead>
@@ -1417,6 +1417,7 @@
         </div>
 
       <br>
+      <h1>RF15 actualizar documento</h1> 
       <div class="table-container">
         <table>
             <thead>
@@ -1475,6 +1476,7 @@
         </table>
         </div>
         <br>
+        <h1>RF16 eliminar documento</h1> 
         <div class="table-container">
           <table>
               <thead>
@@ -1560,7 +1562,7 @@
                     </tr>
                     <tr>
                         <td>Header</td>
-                        <td>null</td>
+                        <td>token</td>
                     </tr>
                     <tr>
                         <td>Usuario</td>
@@ -1607,21 +1609,429 @@
 
             <br>
 
-              
-        
-             
+
+            <!-- requerimiento 18 Jonathan -->
+<section>
+    <h1 class="titulo">RF 18 Listar versiones de documentos</h1>
+        <div class="table-container">
+        <table>
+            <thead>
+                <td>Nombre</td>
+                <td>Descripcion</td>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Listar versiones de documentos</td>
+                    <td> 
+                    <p>El modulo de versiones en el sistema permitirá visualizar las diferentes versiones de los documentos alojados en la base de datos, en este módulo se podrá verificar las versiones activas que están siendo utilizadas para la gestión de formularios.
+                    </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>URL</td>
+                    <td>http://localhost:3000/versiones/listar</td>
+                </tr>
+                <tr>
+                    <td>Descripcion</td>
+                    <td>El sistema permitirá listar las versiones de documentos existentes en la tabla versiones de la base de datos
+                    </td>
+                </tr>
+                <tr>
+                    <td>Verbo HTTP</td>
+                    <td>GET</td>
+                </tr>
+                <tr>
+                    <td>Header</td>
+                    <td>token</td>
+                </tr>
+                <tr>
+                    <td>Usuario</td>
+                    <td>Administrador, Encargado</td>
+                </tr>
+                <tr>
+                    <td>Peticion Body</td>
+                    <td>NULL
+                    </td>
+                </tr>
+                <tr>
+                    <td>Respuesta Json</td>
+                    <td>Correcto: 
+                        <br><br>
+                        {
+                        "id_formato": 1,<br>
+                        "version": "0.1",<br>
+                        "editable": 1,<br>
+                        "fk_id_tipo_formato": 1,<br>
+                        "fk_id_usuarios": 1,<br>
+                        "formato_vacio": null,<br>
+                        "fk_documentos": 2 <br>
+                    }<br><br>
+                        Incorrecto: status(404).json({"message" : "No se encontraron versiones en la base de datos"})<br><br>
+                        Error: status(500).json({"message" : "Error en el controlador VersionesController.js " + err})
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+
+        <br>
+            <!-- administrar formularios -->
+        <h1 class="titulo">RF 19 Administrar formularios</h1>
+        <!-- registrar municipio -->
+        <div class="table-container">
+            <table>
+                <thead>
+                    <td>Nombre</td>
+                    <td>Descripcion</td>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Registrar Municipios</td>
+                        <td> 
+                        <p>
+                        </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>URL</td>
+                        <td>http://localhost:3000/municipio/registrar</td>
+                    </tr>
+                    <tr>
+                        <td>Descripcion</td>
+                        <td>El sistema permitirá registrar un nuevo municipio en la tabla municipio de la base de datos
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Verbo HTTP</td>
+                        <td>POST</td>
+                    </tr>
+                    <tr>
+                        <td>Header</td>
+                        <td>token</td>
+                    </tr>
+                    <tr>
+                        <td>Usuario</td>
+                        <td>Administrador, Encargado</td>
+                    </tr>
+                    <tr>
+                        <td>Peticion Body</td>
+                        <td>json: <br>
+                            { <br>
+                                "nombre_municipio": " " <br>
+                            }
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Respuesta Json</td>
+                        <td>Correcto: status(200).json({"menssage":"el dato se registro correctamente"})
+                        <br><br>
+                            Incorrecto: status(404).json({"message":"el dato no se registro"})<br><br>
+                            Error: status(500).json({"message":"error al conectar la base de datos"})
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <br>
+        <br>
+        <!-- registrar finca -->
+        <div class="table-container">
+            <table>
+                <thead>
+                    <td>Nombre</td>
+                    <td>Descripcion</td>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Registrar finca</td>
+                        <td> 
+                        <p>
+                        </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>URL</td>
+                        <td>http://localhost:3000/finca/registrar</td>
+                    </tr>
+                    <tr>
+                        <td>Descripcion</td>
+                        <td>El sistema permitirá registrar una nueva finca en la tabla finca de la base de datos
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Verbo HTTP</td>
+                        <td>POST</td>
+                    </tr>
+                    <tr>
+                        <td>Header</td>
+                        <td>token</td>
+                    </tr>
+                    <tr>
+                        <td>Usuario</td>
+                        <td>Administrador, Encargado</td>
+                    </tr>
+                    <tr>
+                        <td>Peticion Body</td>
+                        <td>json: <br>
+                            { <br>
+                                "nombre_finca": " ", <br>
+                                "fk_id_municipio":  , <br>
+                                "fk_id_usuario": <br>
+                            }
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Respuesta Json</td>
+                        <td>Correcto: status(200).json({"message":"Se registró con éxito la finca"})
+                        <br><br>
+                            Incorrecto: status(404).json({"message":"No se registró la finca."})<br><br>
+                            Error: status(500).json({"message":"error "+e.message})
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <br>
+        <br>
+        <!-- registro muestra -->
+        <div class="table-container">
+            <table>
+                <thead>
+                    <td>Nombre</td>
+                    <td>Descripcion</td>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Registrar Muestra</td>
+                        <td> 
+                        <p>
+                        </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>URL</td>
+                        <td>http://localhost:3000/muestra/registrar</td>
+                    </tr>
+                    <tr>
+                        <td>Descripcion</td>
+                        <td>El sistema permitirá registrar una nueva muestra en la tabla muestra de la base de datos
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Verbo HTTP</td>
+                        <td>POST</td>
+                    </tr>
+                    <tr>
+                        <td>Header</td>
+                        <td>token</td>
+                    </tr>
+                    <tr>
+                        <td>Usuario</td>
+                        <td>Administrador, Encargado</td>
+                    </tr>
+                    <tr>
+                        <td>Peticion Body</td>
+                        <td>json: <br>
+                            { <br>
+                                    "cantidad": , <br>
+                                    "fk_id_finca": , <br>
+                                    "fecha_muestra": " " <br>
+                            }
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Respuesta Json</td>
+                        <td>Correcto: status(200).json({"menssage":"se registro correctamente "})
+                        <br><br>
+                            Incorrecto: status(404).json({"message":"no se registro correctamente"})<br><br>
+                            Error: status(500).json({"message":"error al conectar la base de datos "+error.message})
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <br>
+        <br>
+        <!-- registrar datos -->
+        <div class="table-container">
+            <table>
+                <thead>
+                    <td>Nombre</td>
+                    <td>Descripcion</td>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Registrar Datos</td>
+                        <td> 
+                        <p>
+                        </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>URL</td>
+                        <td>http://localhost:3000/datos/registrar</td>
+                    </tr>
+                    <tr>
+                        <td>Descripcion</td>
+                        <td>El sistema permitirá registrar una nuevo dato en la tabla datos de la base de datos del sistema
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Verbo HTTP</td>
+                        <td>POST</td>
+                    </tr>
+                    <tr>
+                        <td>Header</td>
+                        <td>token</td>
+                    </tr>
+                    <tr>
+                        <td>Usuario</td>
+                        <td>Administrador, Encargado</td>
+                    </tr>
+                    <tr>
+                        <td>Peticion Body</td>
+                        <td>json: <br>
+                            { <br>
+                                "nombre": "", <br>
+                                "tipo": , <br>
+                                "estado": , <br>
+                                "fk_id_formato": <br> 
+                            }
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Respuesta Json</td>
+                        <td>Correcto: status(200).json({"menssage":"dato registrado exitosamente"})
+                        <br><br>
+                            Incorrecto: status(404).json({"mensagge":"dato no registrado"})<br><br>
+                            Error: status(500).json({"menssage":"error al conectar a la base de datos"+error.message})
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <br>
+        <br>
+        <!-- registrar detalle -->
+        <div class="table-container">
+            <table>
+                <thead>
+                    <td>Nombre</td>
+                    <td>Descripcion</td>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Registrar Detalle</td>
+                        <td> 
+                        <p>
+                        </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>URL</td>
+                        <td>http://localhost:3000/detalle/registrar</td>
+                    </tr>
+                    <tr>
+                        <td>Descripcion</td>
+                        <td>El sistema permitirá registrar un nuevo detalle en la tabla detalle de la base de datos del sistema
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Verbo HTTP</td>
+                        <td>POST</td>
+                    </tr>
+                    <tr>
+                        <td>Header</td>
+                        <td>token</td>
+                    </tr>
+                    <tr>
+                        <td>Usuario</td>
+                        <td>Administrador, Encargado</td>
+                    </tr>
+                    <tr>
+                        <td>Peticion Body</td>
+                        <td>json: <br>
+                            { <br>
+                                "fk_id_formato": , <br>
+                                "fk_id_datos": , <br>
+                                "valor": , <br>
+                                "fk_id_servicios":  <br>
+                            }
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Respuesta Json</td>
+                        <td>Correcto: status(200).json({message:'Dato ingresado con exito'})
+                        <br><br>
+                            Incorrecto: status(404).json({message:'Datos no registrados'})<br><br>
+                            Error: status(500).json({message:'Error en el servidor'+error.message})
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <br>
+        <br>
+        <!-- registro servicios -->
+        <div class="table-container">
+            <table>
+                <thead>
+                    <td>Nombre</td>
+                    <td>Descripcion</td>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Registrar Servicios</td>
+                        <td> 
+                        <p>
+                        </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>URL</td>
+                        <td>http://localhost:3000/servicios/registrar</td>
+                    </tr>
+                    <tr>
+                        <td>Descripcion</td>
+                        <td>El sistema permitirá registrar un servicio en la tabla servicio de la base de datos del sistema
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Verbo HTTP</td>
+                        <td>POST</td>
+                    </tr>
+                    <tr>
+                        <td>Header</td>
+                        <td>token</td>
+                    </tr>
+                    <tr>
+                        <td>Usuario</td>
+                        <td>Administrador, Encargado</td>
+                    </tr>
+                    <tr>
+                        <td>Peticion Body</td>
+                        <td>json: <br>
+                            { <br> 
+                                "tipo_servicios": " ", <br>
+                                "fk_id_muestra": , <br>
+                                "fk_formato":  <br>
+                            }
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Respuesta Json</td>
+                        <td>Correcto: status(200).json({message:'Dato registrado con exito'})
+                        <br><br>
+                            Incorrecto: status(404).json({message:'Dato no registrado'})<br><br>
+                            Error: status(500).json({message:'Error en el servidor'+error.message})
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
 
 
-        
-    
-               
-                
-            
-     
-          
-              
-
-            
+</section>
   </section> 
 </div>
 </body>

@@ -30,7 +30,7 @@ export const RegistrarMuestra=async(req,res)=>{
 
         }
     } catch (error) {
-        return res.status(404).json({"message":"error al conectar la base de datos "+error.message})
+        return res.status(500).json({"message":"error al conectar la base de datos "+error.message})
     }
 }
 export const ActualizarMuestra=async(req,res)=>{

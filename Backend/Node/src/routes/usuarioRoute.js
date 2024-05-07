@@ -8,7 +8,7 @@ rutaUsuario.get('/listar', validarToken,listarUsuario)
 rutaUsuario.get('/listarid/:id_usuario',validarToken, listarUsuarioId)
 rutaUsuario.post('/registrar',validarToken,validacionUser,registrarUsuario)
 rutaUsuario.delete('/eliminar/:id_usuario', validarToken, eliminarUsuario)
-rutaUsuario.put('/actualizar/:id_usuario',validarToken,validacionUser,actualizarUsuario)
+rutaUsuario.put('/actualizar/:id',validarToken,validacionUser,actualizarUsuario)
 
 
 
