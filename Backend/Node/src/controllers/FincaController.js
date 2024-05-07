@@ -1,4 +1,5 @@
 import { conexion } from "../database/conexion.js"
+import { validationResult } from "express-validator"
 
 export const listarfincas = async (req, res) => {
     try{
