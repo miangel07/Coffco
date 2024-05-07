@@ -1,4 +1,6 @@
 import { conexion } from "../database/conexion.js";
+import { validationResult } from "express-validator"
+
 export const ListarDatos = async(req,res) => {
     try {
         
@@ -12,6 +14,10 @@ export const ListarDatos = async(req,res) => {
 }
 export const RegistrarDatos=async(req,res)=> {
     try {
+        const error = validationResult(req)
+        if(!error.isEmpty()){
+            return res.status(400).json(error)
+        }
         let{nombre,tipo,estado,fk_id_formato}=req.body
         let sql = `insert into muestra(nombre,tipo,estado,fk_id_formato)
         values ('${nombre}','${tipo}','${estado},'${fk_id_formato}')`
