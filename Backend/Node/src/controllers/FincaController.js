@@ -15,6 +15,11 @@ export const listarfincas = async (req, res) => {
 
 export const registrarFincas = async (req, res) => {
     try {
+        const error = validationResult(req)
+        if(!error.isEmpty()){
+            return res.status(400).json(error)
+        }
+
         let {nombre_finca, fk_id_municipio, fk_id_usuario} = req.body
 
         let sql = `insert into finca (nombre_finca, fk_id_municipio, fk_id_usuario)
