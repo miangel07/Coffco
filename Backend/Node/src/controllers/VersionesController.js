@@ -1,4 +1,5 @@
 import { conexion } from "../database/conexion.js"
+import { validationResult } from "express-validator"
 
 export const listarVersiones = async (req, res) => {
     try{
@@ -15,6 +16,12 @@ export const listarVersiones = async (req, res) => {
 
 export const registrarVersiones = async (req, res) => { 
     try {
+        const error = validationResult(req)
+        if(!error.isEmpty()){
+            return res.status(400).json(error)
+        }
+
+        
         const { version, editable, fk_id_tipo_formato, fk_id_usuarios, formato_vacio, fk_documentos } = req.body;
 
         const sql = `INSERT INTO versiones (version, editable, fk_id_tipo_formato, fk_id_usuarios, formato_vacio, fk_documentos) VALUES (?, ?, ?, ?, ?, ?)`;
