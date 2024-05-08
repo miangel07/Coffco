@@ -20,10 +20,10 @@ export const registrarDocumentos = async (req, res) => {
         if(!error.isEmpty()){
             return res.status(400).json(error)
         }
-        let {nombre, fecha_carga,  fk_id_usuarios, descripcion,formato} = req.body
-
-        let sql = `insert into documentos (nombre, fecha_carga, fk_id_usuarios, descripcion,formato )
-        values ('${nombre}','${fecha_carga}','${fk_id_usuarios}','${descripcion}','${formato}')`
+     
+        let { nombre,fecha_carga,  fk_id_usuarios, descripcion,formato} = req.body
+        console.log(nombre,fecha_carga,  fk_id_usuarios, descripcion,formato)
+        let sql = ``
         const [rows] = await conexion.query(sql)
         if(rows.affectedRows > 0){
             return res.status(200).json({"message":"Se registró con éxito el documentos"})

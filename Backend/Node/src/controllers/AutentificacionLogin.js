@@ -58,3 +58,17 @@ export const validarUsuarios = async (req, res) => {
     } catch (error) {
         return res.status(500).json({ message: 'Error en el servidor' + error.message });
 }}
+export const cerrarSesion=(req,res) => {
+    let cerrarSesion=[]
+    const token = req.headers.authorization.split(' ')[1]; 
+    console.log(token)
+    cerrarSesion.push(token);
+    if(cerrarSesion.length > 0) {
+        res.status(200).json('Sesión cerrada');
+    }
+    if (!token) {
+        return res.redirect('/login');
+      }
+    
+}
+
