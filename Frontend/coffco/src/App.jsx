@@ -2,17 +2,26 @@ import React from "react";
 
 //importar pages
 
-
-import {Route,Routes} from "react-router-dom"
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import RegistroPage from './pages/RegistroPage';
+import RegistroComponent from "./components/RegistroComponent";
 
 //importar components
 
 const App = () => {
 return (
 <>
-<Routes>
-
-</Routes>
+<Router>
+      <Switch>
+        <Route exact path="/">
+          {/* Página de inicio */}
+        </Route>
+        <Route exact path="/registro">
+          <RegistroPage />
+        </Route>
+        {/* Otras rutas */}
+      </Switch>
+    </Router>
 </>
 );
 };
