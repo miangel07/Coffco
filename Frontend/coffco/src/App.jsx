@@ -8,12 +8,12 @@ import {Route,Routes} from "react-router-dom"
 //importar components
 
 const App = () => {
- return (
- <>
+return (
+<>
 <Routes>
 
 </Routes>
- </>
- );
+</>
+);
 };
 export default App;
