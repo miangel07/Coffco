@@ -1,3 +1,5 @@
 from django.contrib import admin
+from apps.alquilerLaboratorio.models import AlquilerLaboratorio
 
-# Register your models here.
+admin.site.register(AlquilerLaboratorio)
+

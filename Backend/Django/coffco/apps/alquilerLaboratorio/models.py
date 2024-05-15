@@ -2,7 +2,7 @@ from django.db import models
 from apps.user.models import User
 from django.db.models import SET_NULL
 class AlquilerLaboratorio(models.Model):
-    fecha_alquiler = models.DateTimeField(auto_now_add=True)
+    fecha_alquiler = models.DateTimeField()
     usuario = models.ForeignKey(User,on_delete=SET_NULL,null=True,blank=True)
     Activo='Activo'
     Inactivo='Inactivo'
