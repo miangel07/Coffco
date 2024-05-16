@@ -1,27 +1,20 @@
 import React from "react";
+import {Route, Routes } from "react-router-dom";
+import LoginPages from './pages/loginPage';
+import Inicio from './pages/inicio';
+import AdministrarUsurio from './pages/administrarUsuarios';
 
-//importar pages
 
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import RegistroPage from './pages/RegistroPage';
-import RegistroComponent from "./components/RegistroComponent";
 
-//importar components
 
 const App = () => {
 return (
 <>
-<Router>
-      <Switch>
-        <Route exact path="/">
-          {/* Página de inicio */}
-        </Route>
-        <Route exact path="/registro">
-          <RegistroPage />
-        </Route>
-        {/* Otras rutas */}
-      </Switch>
-    </Router>
+<Routes>
+        <Route exact path="/" element={<LoginPages/>}></Route>
+        <Route exact path="/inicio" element={<Inicio/>}></Route>
+        <Route exact path="/administarusuario" element={<AdministrarUsurio/>}></Route>
+    </Routes>
 </>
 );
 };

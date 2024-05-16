@@ -96,6 +96,19 @@ export const actualizarUsuario = async (req,res)=>{
         
     } catch (error) {
         res.status(500).json({'message': 'Error'+error.message})
-    }
+    }
 
+}
+export const ConsultaUsers = async(req, res) =>{
+    try {
+        let sql="SELECT COUNT(*) FROM usuarios WHERE rol_usuario = 'usuario'"
+        const [respuesta] = await conexion.query(sql)
+        if(respuesta.length>0){
+            res.status(200).json(respuesta)
+        }else{
+            res.status(404).json({message:'No se encontraron usuarios'})
+        }
+    } catch (error) {
+        
+    }
 }
