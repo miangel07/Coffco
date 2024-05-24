@@ -40,10 +40,12 @@ export const registrarUsuario = async (req,res)=>{
             return res.status(400).json(error)
         }
 
-        let{nombre_usuario,apellido_usuario,correo_electronico,telefono_usuario,rol_usuario,contraseña_usuario,numero_identificacion,tipo_documento}=req.body
+        
+        let{nombre_usuario,apellido_usuario,correo_electronico,telefono_usuario,contraseña_usuario,rol_usuario,tipo_documento,numero_identificacion}=req.body
+      
         const salt = await bcryptjs.genSalt(10);
         let hashPassword = await bcryptjs.hash(contraseña_usuario,salt)
-        console.log(hashPassword)
+        
         let sql = `insert into usuarios (nombre_usuario,apellido_usuario,correo_electronico,telefono_usuario,rol_usuario,contraseña_usuario,numero_identificacion,tipo_documento)
         value('${nombre_usuario}','${apellido_usuario}','${correo_electronico}','${telefono_usuario}','${rol_usuario}','${hashPassword}','${numero_identificacion}','${tipo_documento}')`;
         const [respuesta]=await conexion.query(sql)
@@ -53,7 +55,7 @@ export const registrarUsuario = async (req,res)=>{
             res.status(404).json({message:'No se pudo registrar el usuario'})
         }
     } catch (error) {
-        res.status(500).json({message:'Error en el servidor'+error.message})
+        res.status(500).json({message:'Error'+error.message})
 
     }
 }
@@ -101,10 +103,18 @@ export const actualizarUsuario = async (req,res)=>{
 }
 export const ConsultaUsers = async(req, res) =>{
     try {
-        let sql="SELECT COUNT(*) FROM usuarios WHERE rol_usuario = 'usuario'"
+        let sql=`SELECT COUNT(rol_usuario) AS rol
+        FROM usuarios
+        WHERE rol_usuario = 'administrador'
+        GROUP BY rol_usuario`
+        let rol 
         const [respuesta] = await conexion.query(sql)
-        if(respuesta.length>0){
+        console.log(respuesta)
+       
+        
+        if(respuesta.length >0){
             res.status(200).json(respuesta)
+            
         }else{
             res.status(404).json({message:'No se encontraron usuarios'})
         }
